@@ -1,3 +1,4 @@
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,8 @@ public class  changeScene : MonoBehaviour
     public void CelestialSummit()
     {
         // Load the specified scene
+        float panelYValue = Panel.position.y;
+        PlayerPrefs.SetFloat("PanelYValue", panelYValue);
         SceneManager.LoadScene(2);
     }
     public void AstralArchives()

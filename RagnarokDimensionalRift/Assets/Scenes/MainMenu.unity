@@ -2809,6 +2809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 
+  yourPanelRectTransform: {fileID: 152429897}
 --- !u!1 &2071920209
 GameObject:
   m_ObjectHideFlags: 0

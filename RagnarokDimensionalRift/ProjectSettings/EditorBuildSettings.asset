@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ConfirmBattle.unity
     guid: 7d8eeda4b6b984cae830686f9f2148f9
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: 28ebfb4b57e7ea248af095bfe222d503
   m_configObjects: {}

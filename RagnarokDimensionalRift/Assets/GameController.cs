@@ -34,5 +34,6 @@ public class GameController : MonoBehaviour
 
         Debug.Log("Setting GameController instance."); // Add this line
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 }

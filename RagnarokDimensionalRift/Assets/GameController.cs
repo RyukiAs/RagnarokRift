@@ -21,6 +21,11 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public List<God> GetAllSummonedGods()
+    {
+        return allSummonedGods;
+    }
+
     private void Awake()
     {
         Debug.Log("Awake called in GameController."); // Add this line

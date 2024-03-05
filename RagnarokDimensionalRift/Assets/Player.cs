@@ -6,25 +6,24 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Player script Start method called."); // Add this line
+        //Debug.Log("Player script Start method called."); // Add this line
 
         // Your existing code
         gameController = GameController.Instance;
-
-        Debug.Log("Player script initialization complete."); // Add this line
+        if (gameController == null)
+        {
+            Debug.LogError("GameController instance not found. Make sure GameControllerInitializer script is in the scene.");
+        }
+        //Debug.Log("Player script initialization complete."); // Add this line
     }
 
     public void SummonGod()
     {
-        // Instantiate a new GameObject for the summoned god
-        GameObject godObject = new GameObject("Cthulhu");
+        // Load the icon sprite (you can set this in the Unity Editor)
+        Sprite godIcon = Resources.Load<Sprite>("GodIcons/CthulhuIcon"); 
 
-        // Attach a God component to the newly created GameObject
-        God newGod = godObject.AddComponent<God>();
-        newGod.godName = "Cthulhu";
-        newGod.powerLevel = 50;
-
-        // Add the newly summoned god to the GameController
+        // Create a new god with a specified icon
+        God newGod = new God("Cthulhu", 1, godIcon);
         gameController.allSummonedGods.Add(newGod);
     }
 

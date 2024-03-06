@@ -41,10 +41,7 @@ public class GodsDisplay : MonoBehaviour
                 secondIconImage.sprite = god.icon;
             }
 
-            // Accessing the TextMeshProUGUI components manually
-            //TextMeshProUGUI[] textComponents = godIcon.GetComponentsInChildren<TextMeshProUGUI>();
-            //TextMeshProUGUI gradeText;
-            //TextMeshProUGUI levelText;
+            //
             TextMeshProUGUI gradeText = null;
             TextMeshProUGUI levelText = null;
 
@@ -66,21 +63,7 @@ public class GodsDisplay : MonoBehaviour
             Debug.Log("Grade Text Component: " + (gradeText != null ? gradeText.gameObject.name : "Not found"));
             Debug.Log("Level Text Component: " + (levelText != null ? levelText.gameObject.name : "Not found"));
 
-            //foreach (TextMeshProUGUI textComponent in textComponents)
-            //{
-            //    if (textComponent.gameObject.name == "GradeText")
-            //    {
-            //        gradeText= textComponent;
-            //    }
-            //    else if (textComponent.gameObject.name == "LevelText")
-            //    {
-            //        levelText= textComponent;
-            //    }
-            //    // Add more conditions if you have other named text components
-            //}
-            // Set god Grade
-            //TextMeshProUGUI gradeText = godIcon.GetComponentInChildren<TextMeshProUGUI>();
-            //TextMeshProUGUI levelText = godIcon.GetComponentInChildren<TextMeshProUGUI>();
+
             if (gradeText != null)
             {
                 Dictionary<int, string> gradeMap = new Dictionary<int, string>

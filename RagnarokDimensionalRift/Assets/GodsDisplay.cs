@@ -12,6 +12,12 @@ public class GodsDisplay : MonoBehaviour
     [SerializeField]
     private Transform iconsParent;
 
+    [SerializeField]
+    private int startingGodIndex;
+
+    [SerializeField]
+    private int endGodIndex; // Adjust this value based on your needs
+
     private void OnEnable()
     {
         DisplayGodIcons();
@@ -23,11 +29,23 @@ public class GodsDisplay : MonoBehaviour
         List<God> summonedGods = GameController.Instance.GetAllSummonedGods();
 
         // Instantiate and display icons for each summoned god
-        foreach (God god in summonedGods)
+        //foreach (God god in summonedGods)
+        for (int i = startingGodIndex; i <= endGodIndex && i < summonedGods.Count; i++)
         {
             // Instantiate the god icon prefab
             GameObject godIcon = Instantiate(godIconPrefab, iconsParent);
 
+            GodScreenCanvas godScreenContent = godIcon.GetComponent<GodScreenCanvas>();
+            // Check if the script is attached
+            if (godScreenContent != null)
+            {
+                // Call the SetGodInfo method to set the information of the God
+                godScreenContent.SetGodInfo(summonedGods[i]);
+            }
+            else
+            {
+                Debug.LogError("GodScreenContent script not found on the prefab.");
+            }
             // Set the icon sprite
             Image[] iconImages = godIcon.GetComponentsInChildren<Image>(true);
             Image secondIconImage = iconImages.Length >= 2 ? iconImages[1] : null;
@@ -38,7 +56,7 @@ public class GodsDisplay : MonoBehaviour
 
             if (secondIconImage != null)
             {
-                secondIconImage.sprite = god.icon;
+                secondIconImage.sprite = summonedGods[i].icon;
             }
 
             //
@@ -81,7 +99,7 @@ public class GodsDisplay : MonoBehaviour
                     { 11, "SSS" }
                 };
 
-                if (gradeMap.TryGetValue(god.grade, out string gradeString))
+                if (gradeMap.TryGetValue(summonedGods[i].grade, out string gradeString))
                 {
                     gradeText.text = gradeString;
                 }
@@ -92,8 +110,9 @@ public class GodsDisplay : MonoBehaviour
             }
             if(levelText != null)
             {
-                levelText.text = god.level.ToString();
-            }else
+                levelText.text = summonedGods[i].level.ToString();
+            }
+            else
             {
                 Debug.Log("Error in setting level");
             }

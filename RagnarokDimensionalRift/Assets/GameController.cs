@@ -5,6 +5,8 @@ public class GameController : MonoBehaviour
 {
     public List<God> allSummonedGods = new List<God>();
 
+    public God TappedGod;
+
     // Singleton pattern to ensure only one instance of GameController exists
     private static GameController instance;
     public static GameController Instance
@@ -24,6 +26,20 @@ public class GameController : MonoBehaviour
     public List<God> GetAllSummonedGods()
     {
         return allSummonedGods;
+    }
+
+    public void SetTappedGod(God god)
+    {
+        // Set the TappedGod property
+        TappedGod = god;
+
+        // You can perform additional actions if needed
+        //Debug.Log("Tapped God set: " + TappedGod.Name);
+    }
+
+    public God getTappedGod()
+    {
+        return TappedGod;
     }
 
     private void Awake()

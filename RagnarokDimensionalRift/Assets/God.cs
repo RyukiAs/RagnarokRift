@@ -12,7 +12,7 @@ public class God
     public int defense;
     public string description;
 
-    public God(string godName, int grade, Sprite icon)
+    public God(string godName, int grade, Sprite icon, string description)
     {
         this.godName = godName;
         this.grade = grade;
@@ -21,7 +21,7 @@ public class God
         this.health = 1000;
         this.attack = 75;
         this.defense = 40;
-        this.description = "Hi";
+        this.description = description;
     }
 
     // Additional properties and methods can be added as needed

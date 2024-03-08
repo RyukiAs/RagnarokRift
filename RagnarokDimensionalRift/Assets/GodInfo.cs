@@ -53,6 +53,7 @@ public class GodInfo : MonoBehaviour
     public void upgradeGod()
     {
         godPass.level += 1;
+        godPass.CalculateUpgradedStats(godPass.level);
         UpdateGodInfoDisplay();
     }
 

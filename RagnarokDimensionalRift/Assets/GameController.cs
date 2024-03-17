@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
 
     public God TappedGod;
 
+    public int ActiveGrade = 1;
+
     // Singleton pattern to ensure only one instance of GameController exists
     private static GameController instance;
     public static GameController Instance
@@ -27,6 +29,15 @@ public class GameController : MonoBehaviour
     {
         return allSummonedGods;
     }
+    public int GetActiveGrade()
+    {
+        return ActiveGrade;
+    }
+    public void SetActiveGrade(int grade)
+    {
+        ActiveGrade = grade;
+    }
+
 
     public void SetTappedGod(God god)
     {

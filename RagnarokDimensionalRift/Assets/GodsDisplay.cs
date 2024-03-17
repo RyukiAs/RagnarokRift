@@ -22,6 +22,15 @@ public class GodsDisplay : MonoBehaviour
     {
         DisplayGodIcons();
     }
+    private void OnDisable()
+    {
+        Transform parentTransform = this.transform;
+
+        foreach (Transform child in parentTransform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
 
     private void DisplayGodIcons()
     {

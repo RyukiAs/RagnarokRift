@@ -236,9 +236,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2317106012161839125}
-  - component: {fileID: 6769498782389419845}
+  - component: {fileID: 612012742327622747}
   m_Layer: 5
-  m_Name: GodPrefabEssence
+  m_Name: GodEssenceP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,7 +269,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6769498782389419845
+--- !u!114 &612012742327622747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5528276255685704766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf431fcfe9637bd4bb0a44875b9a3dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: c2043007f897c164698dbd3e567229bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   godPass:
@@ -293,7 +293,6 @@ MonoBehaviour:
     attack: 0
     defense: 0
     description: 
-  canvasNameToToggle: GodScreen
 --- !u!1 &6840181657012143162
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,4 +624,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3412587812702470479}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 612012742327622747}
+        m_TargetAssemblyTypeName: GodEssencePrefab, Assembly-CSharp
+        m_MethodName: addGodToList
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

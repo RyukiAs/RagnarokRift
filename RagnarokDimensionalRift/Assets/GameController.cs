@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
 
     public int ActiveGrade = 1;
 
+    public List<God> EssenceList = new List<God>();
+
     // Singleton pattern to ensure only one instance of GameController exists
     private static GameController instance;
     public static GameController Instance
@@ -38,6 +40,10 @@ public class GameController : MonoBehaviour
         ActiveGrade = grade;
     }
 
+    public List<God> GetAllEssenceGods()
+    {
+        return EssenceList;
+    }
 
     public void SetTappedGod(God god)
     {

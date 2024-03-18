@@ -50,10 +50,7 @@ public class GodScreenCanvas : MonoBehaviour
             Debug.Log("found component godscreenCanvas in parent: " + useGod);
         }
         gameController.SetTappedGod(useGod.godPass);
-        //if (grandparent != null)
-        //{
-        //    grandparent.gameObject.SetActive(false);
-        //}
+        
         // Find the canvas by its name
         GameObject canvasToToggle = grandparent.parent.Find(canvasNameToToggle)?.gameObject;
         Debug.Log("found: " + canvasToToggle);
@@ -62,7 +59,6 @@ public class GodScreenCanvas : MonoBehaviour
         if (canvasToToggle != null)
         {
             
-            //gameController.SetTappedGod(useGod.godPass);
 
             canvasToToggle.gameObject.SetActive(true);
 

@@ -43,7 +43,8 @@ public class ShowGodsEssence : MonoBehaviour
                 // Instantiate the god icon prefab
                 GameObject godIcon = Instantiate(godIconPrefab, iconsParent);
 
-                GodScreenCanvas godScreenContent = godIcon.GetComponent<GodScreenCanvas>();
+                //GodScreenCanvas godScreenContent = godIcon.GetComponent<GodScreenCanvas>();
+                GodEssencePrefab godScreenContent = godIcon.GetComponent<GodEssencePrefab>();
                 // Check if the script is attached
                 if (godScreenContent != null)
                 {

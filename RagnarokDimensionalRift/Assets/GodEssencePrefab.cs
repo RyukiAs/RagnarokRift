@@ -43,18 +43,18 @@ public class GodEssencePrefab : MonoBehaviour
                 //Image buttonImage = button.GetComponent<Image>();
                 //Image buttonImage = button.image;
 
-                image.color = Color.gray;
+                //image.color = Color.gray;
 
 
                 ColorBlock colors = button.colors;
 
                 // Modify the alpha value of the normal color
-                Color normalColor = colors.normalColor;
-                normalColor.a = 1.0f; // Change this value as needed
-                colors.normalColor = normalColor;
+                //Color normalColor = colors.normalColor;
+                //normalColor.a = 1.0f; // Change this value as needed
+                //colors.normalColor = normalColor;
 
                 // Apply the modified colors to the button
-                button.colors = colors;
+                //button.colors = colors;
                 ///float aplha = 0.5f;
                 //Color buttonColor = buttonImage.color;
                 //currentColor.a = aplha;

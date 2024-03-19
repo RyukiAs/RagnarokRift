@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 3412587812702470479}
   - component: {fileID: 7203054043364445557}
   m_Layer: 5
-  m_Name: GoToGodScreen
+  m_Name: SelectEssence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

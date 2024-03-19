@@ -681,7 +681,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1432431952}
         m_TargetAssemblyTypeName: SetActiveGrade, Assembly-CSharp
-        m_MethodName: setGrade
+        m_MethodName: SetGrade
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4441,7 +4441,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1432431952}
         m_TargetAssemblyTypeName: SetActiveGrade, Assembly-CSharp
-        m_MethodName: setGrade
+        m_MethodName: SetGrade
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7959,7 +7959,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1432431952}
         m_TargetAssemblyTypeName: SetActiveGrade, Assembly-CSharp
-        m_MethodName: setGrade
+        m_MethodName: SetGrade
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9855,7 +9855,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1432431952}
         m_TargetAssemblyTypeName: SetActiveGrade, Assembly-CSharp
-        m_MethodName: setGrade
+        m_MethodName: SetGrade
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11859,7 +11859,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1432431952}
         m_TargetAssemblyTypeName: SetActiveGrade, Assembly-CSharp
-        m_MethodName: setGrade
+        m_MethodName: SetGrade
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13617,7 +13617,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1432431952}
         m_TargetAssemblyTypeName: SetActiveGrade, Assembly-CSharp
-        m_MethodName: setGrade
+        m_MethodName: SetGrade
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14716,7 +14716,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1432431952}
         m_TargetAssemblyTypeName: SetActiveGrade, Assembly-CSharp
-        m_MethodName: setGrade
+        m_MethodName: SetGrade
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15942,7 +15942,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1432431952}
         m_TargetAssemblyTypeName: SetActiveGrade, Assembly-CSharp
-        m_MethodName: setGrade
+        m_MethodName: SetGrade
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15989,7 +15989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2784314, g: 0.27058825, b: 0.5372549, a: 0.68235296}
+  m_Color: {r: 0.2784314, g: 0.27058825, b: 0.5372549, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -20724,8 +20724,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 135, y: 166.86}
-  m_SizeDelta: {x: 932.1639, y: 63.489}
+  m_AnchoredPosition: {x: 136, y: 164.44}
+  m_SizeDelta: {x: 932.1639, y: 62.3898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432431952
 MonoBehaviour:
@@ -20739,6 +20739,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089430599b42fb14c9b5a05ef458cd72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 1108427671}
+  - {fileID: 858676764}
+  - {fileID: 545863993}
+  - {fileID: 1047145931}
+  - {fileID: 730060750}
+  - {fileID: 1889250355}
+  - {fileID: 34169683}
+  - {fileID: 268738742}
+  - {fileID: 2023973602}
+  - {fileID: 975504770}
+  activeColor: '#474589'
+  inactiveColor: '#555555'
 --- !u!1 &1435563787
 GameObject:
   m_ObjectHideFlags: 0
@@ -20773,11 +20786,11 @@ RectTransform:
   m_Father: {fileID: 748197171}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -370, y: 168.6}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 60, y: 60}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1435563789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21238,8 +21251,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 334.62, y: 168.6}
-  m_SizeDelta: {x: 95.595, y: 60.001}
+  m_AnchoredPosition: {x: 334.62, y: 167.12}
+  m_SizeDelta: {x: 95.595, y: 57.034}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1442220046
 MonoBehaviour:
@@ -21898,7 +21911,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1520422588}
-  - component: {fileID: 1520422589}
   m_Layer: 0
   m_Name: Control
   m_TagString: Untagged
@@ -21929,18 +21941,6 @@ Transform:
   m_Father: {fileID: 369580202}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1520422589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520422587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87c9fe59a044527448cbbd35487afefb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1530149909
 GameObject:
   m_ObjectHideFlags: 0
@@ -23470,8 +23470,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.5570984, y: -21.768398}
-  m_SizeDelta: {x: -46.6403, y: -74.6267}
+  m_AnchoredPosition: {x: -1.6956787, y: -25.02121}
+  m_SizeDelta: {x: -36.4171, y: -66.2622}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1628621788
 MonoBehaviour:
@@ -28412,8 +28412,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0011406, y: -386.6}
-  m_SizeDelta: {x: 753.36, y: 1095.8}
+  m_AnchoredPosition: {x: 0.0006218, y: -385.398}
+  m_SizeDelta: {x: 763.58, y: 1095.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1864512368
 MonoBehaviour:
@@ -28442,9 +28442,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 5
+    m_Left: 30
     m_Right: 0
-    m_Top: 5
+    m_Top: 20
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
@@ -29045,7 +29045,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1432431952}
         m_TargetAssemblyTypeName: SetActiveGrade, Assembly-CSharp
-        m_MethodName: setGrade
+        m_MethodName: SetGrade
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29873,8 +29873,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -26.588, y: 167.53}
-  m_SizeDelta: {x: 626.82, y: 62.1444}
+  m_AnchoredPosition: {x: -26.588, y: 167.12}
+  m_SizeDelta: {x: 626.82, y: 57.038}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1974399432
 MonoBehaviour:
@@ -30621,7 +30621,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1432431952}
         m_TargetAssemblyTypeName: SetActiveGrade, Assembly-CSharp
-        m_MethodName: setGrade
+        m_MethodName: SetGrade
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

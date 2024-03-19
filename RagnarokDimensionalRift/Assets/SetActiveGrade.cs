@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SetActiveGrade : MonoBehaviour
 {
 
     private GameController gameController;
+
+    public List<GameObject> buttons;
+
+    public string activeColor;
+
+    public string inactiveColor;
 
     private void Start()
     {
@@ -21,10 +30,49 @@ public class SetActiveGrade : MonoBehaviour
     }
 
 
-    public void setGrade(int grade)
+    public void SetGrade(int grade)
     {
         gameController.SetActiveGrade(grade);
+        gameController.WipeAllEssenceGods();
+
+        Image image = buttons[grade-1].GetComponent<Image>();
+
+        if (image != null)
+        {
+            UnityEngine.Color color;
+            if (UnityEngine.ColorUtility.TryParseHtmlString(activeColor, out color))
+            {
+                image.color = color;
+            }
+            else
+            {
+                Debug.LogError("Invalid hexadecimal color value: " + activeColor);
+            }
+        }
+        else
+        {
+            Debug.LogError("Image component not found on the game object.");
+        }
+
+        UnityEngine.Color color2;
+        foreach ( GameObject button in buttons)
+        {
+            if(button != buttons[grade-1]){
+                Image image2 = button.GetComponent<Image>();
+                if (UnityEngine.ColorUtility.TryParseHtmlString(inactiveColor, out color2))
+                {
+                    image2.color = color2;
+                }
+                else
+                {
+                    Debug.LogError("Invalid hexadecimal color value: " + inactiveColor);
+                }
+            }
+        }
+
+
     }
+
 
     
 }

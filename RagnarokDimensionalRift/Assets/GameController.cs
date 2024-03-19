@@ -45,6 +45,11 @@ public class GameController : MonoBehaviour
         return EssenceList;
     }
 
+    public void WipeAllEssenceGods()
+    {
+        EssenceList.Clear();
+    }
+
     public void SetTappedGod(God god)
     {
         // Set the TappedGod property

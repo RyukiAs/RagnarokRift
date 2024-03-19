@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GodEssencePrefab : MonoBehaviour
 {
@@ -30,7 +31,26 @@ public class GodEssencePrefab : MonoBehaviour
 
     public void addGodToList()
     {
-        gameController.GetAllEssenceGods().Add(this.godPass);
+        if (gameController.GetAllEssenceGods().Count < 7)
+        {
+            if (!gameController.GetAllEssenceGods().Contains(this.godPass))
+            {
+                gameController.GetAllEssenceGods().Add(this.godPass);
+
+                Transform childTransform = transform.Find("SelectEssence");
+                //Debug.Log("gameobject: " + gameObject.name);
+                Image image = childTransform.GetComponent<Image>();
+                image.color = Color.gray;
+            }else
+            {
+                print("This god already exists");
+            }
+
+        }else
+        {
+            print("Essence Already Full");
+        }
+       
     }
 
 }

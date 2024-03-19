@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,47 +32,41 @@ public class GodEssencePrefab : MonoBehaviour
 
     public void addGodToList()
     {
-        if (gameController.GetAllEssenceGods().Count < 7)
+        
+        if (!gameController.GetAllEssenceGods().Contains(this.godPass))
         {
-            if (!gameController.GetAllEssenceGods().Contains(this.godPass))
+            if (gameController.GetAllEssenceGods().Count < 7)
             {
                 gameController.GetAllEssenceGods().Add(this.godPass);
 
-                Transform childTransform = transform.Find("SelectEssence");
-                Image image = childTransform.GetComponent<Image>();
-                Button button = childTransform.GetComponent<Button>();
-                //Image buttonImage = button.GetComponent<Image>();
-                //Image buttonImage = button.image;
 
-                //image.color = Color.gray;
+                Transform tapped = transform.Find("Tapped");
+                Transform text = transform.Find("Number");
+                TextMeshProUGUI textString = text.GetComponent<TextMeshProUGUI>();
 
 
-                ColorBlock colors = button.colors;
-
-                // Modify the alpha value of the normal color
-                //Color normalColor = colors.normalColor;
-                //normalColor.a = 1.0f; // Change this value as needed
-                //colors.normalColor = normalColor;
-
-                // Apply the modified colors to the button
-                //button.colors = colors;
-                ///float aplha = 0.5f;
-                //Color buttonColor = buttonImage.color;
-                //currentColor.a = aplha;
-                //float aplha = 1.0f;
-                //Color currentColor = image.color
-
-                Debug.Log("Changed Color to gray");
+                tapped.gameObject.SetActive(true);
+                //tapped.
+                //text.gameObject.SetActive(true);
+                //textString.text = gameController.GetAllEssenceGods().Count.ToString();
             }
-            else
-            {
-                print("This god already exists");
-            }
-
+                
         }else
         {
-            print("Essence Already Full");
+            Debug.Log("you already have this god");
+            gameController.GetAllEssenceGods().Remove(this.godPass);
+            Transform tapped = transform.Find("Tapped");
+            Transform text = transform.Find("Number");
+            TextMeshProUGUI textString = text.GetComponent<TextMeshProUGUI>();
+
+            tapped.gameObject.SetActive(false);
+            //text.gameObject.SetActive(false);
+            //textString.text = "";
+                
+
         }
+
+        
        
     }
 

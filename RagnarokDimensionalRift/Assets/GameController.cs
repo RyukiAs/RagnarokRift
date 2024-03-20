@@ -11,6 +11,12 @@ public class GameController : MonoBehaviour
 
     public List<God> EssenceList = new List<God>();
 
+    public List<GameObject> ListEssencePrefabs = new List<GameObject>();
+
+    public God CondensedGod;
+
+    //public GameObject ConfirmButton;
+
     // Singleton pattern to ensure only one instance of GameController exists
     private static GameController instance;
     public static GameController Instance
@@ -30,6 +36,22 @@ public class GameController : MonoBehaviour
     public List<God> GetAllSummonedGods()
     {
         return allSummonedGods;
+    }
+    public God GetCondensedGod()
+    {
+        return CondensedGod;
+    }
+    public void SetCondensedGod(God god)
+    {
+        CondensedGod = god;
+    }
+    public List<GameObject> GetListEssencePrefabs()
+    {
+        return ListEssencePrefabs;
+    }
+    public void WipeListEssencePrefabs()
+    {
+        ListEssencePrefabs.Clear();
     }
     public int GetActiveGrade()
     {
@@ -55,8 +77,12 @@ public class GameController : MonoBehaviour
         // Set the TappedGod property
         TappedGod = god;
 
-        // You can perform additional actions if needed
-        //Debug.Log("Tapped God set: " + TappedGod.Name);
+        
+    }
+
+    public void UpgradeGrade(God god)
+    {
+        god.grade += 1;
     }
 
     public God getTappedGod()

@@ -34,6 +34,7 @@ public class SetActiveGrade : MonoBehaviour
     {
         gameController.SetActiveGrade(grade);
         gameController.WipeAllEssenceGods();
+        gameController.WipeListEssencePrefabs();
 
         Image image = buttons[grade-1].GetComponent<Image>();
 

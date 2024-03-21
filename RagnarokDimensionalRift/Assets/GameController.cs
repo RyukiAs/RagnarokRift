@@ -3,17 +3,21 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    //list of all gods
     public List<God> allSummonedGods = new List<God>();
 
     public God TappedGod;
 
+    //used in EssenceOfGods
     public int ActiveGrade = 1;
-
     public List<God> EssenceList = new List<God>();
-
     public List<GameObject> ListEssencePrefabs = new List<GameObject>();
-
     public God CondensedGod;
+
+    //used in Labors
+    public int Trial;
+    public List<God> LaborsList = new List<God>();
+    public List<GameObject> ListLaborsPrefabs = new List<GameObject>();
 
     //public GameObject ConfirmButton;
 

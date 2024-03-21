@@ -5,43 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/MainMenu.unity
-    guid: 388e94a546e46446b9898a9db597fb7f
-  - enabled: 0
-    path: Assets/Scenes/Astral Archives.unity
-    guid: f840163f675b2a748a4ce37e78843ed9
-  - enabled: 0
-    path: Assets/Scenes/Celestial Summit.unity
-    guid: f542b3b260f1f9e4e80ecd82fbf73ab3
-  - enabled: 0
-    path: Assets/Scenes/Colosseum.unity
-    guid: 7d665b4a2e17a97419a3a3a11384e4dd
-  - enabled: 0
-    path: Assets/Scenes/Labors.unity
-    guid: 4246f043b69c0ce48bafc4ac2d4dba44
-  - enabled: 0
-    path: Assets/Scenes/MythicalMarket.unity
-    guid: e9e54ad2b05f5b84e99793e595c1d558
-  - enabled: 0
-    path: Assets/Scenes/HephaestusHellforge.unity
-    guid: 8751bafe28c524d419a79ea603d9fb3e
   - enabled: 1
-    path: Assets/Scenes/TreasureTrove.unity
-    guid: 764fff211e8d0b34481df93b8d76874d
-  - enabled: 1
-    path: Assets/Scenes/EssenceOfGods.unity
-    guid: 6dfb9a8f3ae5537478f4e0a221b7c605
-  - enabled: 1
-    path: Assets/Scenes/SeatOfOlympus.unity
-    guid: cd42937e74c7d2f4d865e67b437432c7
-  - enabled: 1
-    path: Assets/Scenes/ConfirmBattle.unity
-    guid: 7d8eeda4b6b984cae830686f9f2148f9
-  - enabled: 1
-    path: Assets/Scenes/StartScene.unity
-    guid: 28ebfb4b57e7ea248af095bfe222d503
+    path: Assets/Scenes/Ragnarok.unity
+    guid: a58ccded5b29547ba867edd35f4e10fd
   m_configObjects: {}

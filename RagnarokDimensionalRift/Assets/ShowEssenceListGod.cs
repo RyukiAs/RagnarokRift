@@ -25,6 +25,7 @@ public class ShowEssenceListGod : MonoBehaviour
         DisplayGodIcons();
     }
 
+    //Will display all the Gods in EssenceGods
     private void DisplayGodIcons()
     {
         // Get the summoned gods
@@ -48,8 +49,8 @@ public class ShowEssenceListGod : MonoBehaviour
             Image secondIconImage = iconImages.Length >= 2 ? iconImages[1] : null;
 
             
-            Debug.Log("Number of Image components: " + iconImages.Length);
-            Debug.Log("Second Image component: " + secondIconImage);
+            //Debug.Log("Number of Image components: " + iconImages.Length);
+            //Debug.Log("Second Image component: " + secondIconImage);
 
             if (secondIconImage != null)
             {
@@ -62,7 +63,7 @@ public class ShowEssenceListGod : MonoBehaviour
 
             foreach (TextMeshProUGUI textComponent in godIcon.GetComponentsInChildren<TextMeshProUGUI>())
             {
-                Debug.Log("Found Text Component: " + textComponent.gameObject.name);
+                //Debug.Log("Found Text Component: " + textComponent.gameObject.name);
 
                 if (textComponent.gameObject.name == "GradeText")
                 {
@@ -75,8 +76,8 @@ public class ShowEssenceListGod : MonoBehaviour
                 // Add more conditions if you have other named text components
             }
 
-            Debug.Log("Grade Text Component: " + (gradeText != null ? gradeText.gameObject.name : "Not found"));
-            Debug.Log("Level Text Component: " + (levelText != null ? levelText.gameObject.name : "Not found"));
+            //Debug.Log("Grade Text Component: " + (gradeText != null ? gradeText.gameObject.name : "Not found"));
+            //Debug.Log("Level Text Component: " + (levelText != null ? levelText.gameObject.name : "Not found"));
 
 
             if (gradeText != null)

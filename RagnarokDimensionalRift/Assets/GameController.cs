@@ -37,30 +37,46 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public int GetTrial()
+    {
+        return Trial;
+    }
+
+    public void SetTrial(int num)
+    {
+        Trial = num;
+    }
+
     public List<God> GetAllSummonedGods()
     {
         return allSummonedGods;
     }
+
     public God GetCondensedGod()
     {
         return CondensedGod;
     }
+
     public void SetCondensedGod(God god)
     {
         CondensedGod = god;
     }
+
     public List<GameObject> GetListEssencePrefabs()
     {
         return ListEssencePrefabs;
     }
+
     public void WipeListEssencePrefabs()
     {
         ListEssencePrefabs.Clear();
     }
+
     public int GetActiveGrade()
     {
         return ActiveGrade;
     }
+
     public void SetActiveGrade(int grade)
     {
         ActiveGrade = grade;
@@ -80,8 +96,6 @@ public class GameController : MonoBehaviour
     {
         // Set the TappedGod property
         TappedGod = god;
-
-        
     }
 
     public void UpgradeGrade(God god)

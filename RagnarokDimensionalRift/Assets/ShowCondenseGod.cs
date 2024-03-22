@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,17 +20,34 @@ public class ShowCondenseGod : MonoBehaviour
         {
             Debug.Log("GameController instance not found. Make sure GameControllerInitializer script is in the scene.");
         }
+        
     }
     private void OnEnable()
     {
-        DisplayGodIcons();
+        //wait for god to be initialized
+        StartCoroutine(WaitForGod());
     }
 
+    //repeat until god initialized then call DisplayGodIcons
+    private IEnumerator WaitForGod()
+    {
+        while (gameController == null || gameController.GetCondensedGod() == null)
+        {
+            yield return null; // Wait for the next frame
+        }
+
+        // Once the condensed god is set, proceed with displaying the god icons
+        this.godPass = gameController.GetCondensedGod();
+        DisplayGodIcons();
+        
+    }
+
+    //sets the prefab to CondensedGod
     private void DisplayGodIcons()
     {
-        // Get the summoned gods
-        //List<God> essenceGods = GameController.Instance.GetAllEssenceGods();
-
+        
+        Debug.Log(gameController.GetCondensedGod());
+        Debug.Log("Displaying Condensed God");
 
         this.godPass = gameController.GetCondensedGod();
         if (this.godPass != null)
@@ -43,13 +61,29 @@ public class ShowCondenseGod : MonoBehaviour
 
         // Instantiate the god icon prefab
         GameObject godIcon = this.gameObject;
+        if (godIcon != null)
+        {
+            Debug.Log("You have the godIcon");
+        }
+        else
+        {
+            Debug.Log("Error Finding godIcon");
+        }
 
         Image[] iconImages = godIcon.GetComponentsInChildren<Image>(true);
+        if (iconImages != null)
+        {
+            Debug.Log("You have the iconImages");
+        }
+        else
+        {
+            Debug.Log("Error finding iconImages");
+        }
         Image secondIconImage = iconImages.Length >= 2 ? iconImages[1] : null;
 
 
-        Debug.Log("Number of Image components: " + iconImages.Length);
-        Debug.Log("Second Image component: " + secondIconImage);
+        //Debug.Log("Number of Image components: " + iconImages.Length);
+        //Debug.Log("Second Image component: " + secondIconImage);
 
         if (secondIconImage != null)
         {
@@ -62,7 +96,7 @@ public class ShowCondenseGod : MonoBehaviour
 
         foreach (TextMeshProUGUI textComponent in godIcon.GetComponentsInChildren<TextMeshProUGUI>())
         {
-            Debug.Log("Found Text Component: " + textComponent.gameObject.name);
+            //Debug.Log("Found Text Component: " + textComponent.gameObject.name);
 
             if (textComponent.gameObject.name == "GradeText")
             {
@@ -75,8 +109,8 @@ public class ShowCondenseGod : MonoBehaviour
             // Add more conditions if you have other named text components
         }
 
-        Debug.Log("Grade Text Component: " + (gradeText != null ? gradeText.gameObject.name : "Not found"));
-        Debug.Log("Level Text Component: " + (levelText != null ? levelText.gameObject.name : "Not found"));
+        //Debug.Log("Grade Text Component: " + (gradeText != null ? gradeText.gameObject.name : "Not found"));
+        //Debug.Log("Level Text Component: " + (levelText != null ? levelText.gameObject.name : "Not found"));
 
 
         if (gradeText != null)

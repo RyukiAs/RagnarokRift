@@ -29,7 +29,8 @@ public class SetActiveGrade : MonoBehaviour
         //Debug.Log("Player script initialization complete."); // Add this line
     }
 
-
+    //Used in selectionOfEssence to Choose gods of a set grade
+    //this will setGrade in GameController and change the color
     public void SetGrade(int grade)
     {
         gameController.SetActiveGrade(grade);

@@ -17,6 +17,7 @@ public class ShowGodsEssence : MonoBehaviour
         DisplayGodIcons();
     }
 
+    //deletes displays when leaving screen
     private void OnDisable()
     {
         Transform parentTransform = this.transform;
@@ -27,6 +28,8 @@ public class ShowGodsEssence : MonoBehaviour
         }
     }
 
+    //displays the selection of god to condense
+    //Checks Active Grade to only display gods of current active grade
     private void DisplayGodIcons()
     {
         // Get the summoned gods
@@ -60,8 +63,8 @@ public class ShowGodsEssence : MonoBehaviour
                 Image secondIconImage = iconImages.Length >= 2 ? iconImages[1] : null;
 
                 // Log the information for debugging
-                Debug.Log("Number of Image components: " + iconImages.Length);
-                Debug.Log("Second Image component: " + secondIconImage);
+                //Debug.Log("Number of Image components: " + iconImages.Length);
+                //Debug.Log("Second Image component: " + secondIconImage);
 
                 if (secondIconImage != null)
                 {
@@ -74,7 +77,7 @@ public class ShowGodsEssence : MonoBehaviour
 
                 foreach (TextMeshProUGUI textComponent in godIcon.GetComponentsInChildren<TextMeshProUGUI>())
                 {
-                    Debug.Log("Found Text Component: " + textComponent.gameObject.name);
+                    //Debug.Log("Found Text Component: " + textComponent.gameObject.name);
 
                     if (textComponent.gameObject.name == "GradeText")
                     {
@@ -87,8 +90,8 @@ public class ShowGodsEssence : MonoBehaviour
                     // Add more conditions if you have other named text components
                 }
 
-                Debug.Log("Grade Text Component: " + (gradeText != null ? gradeText.gameObject.name : "Not found"));
-                Debug.Log("Level Text Component: " + (levelText != null ? levelText.gameObject.name : "Not found"));
+                //Debug.Log("Grade Text Component: " + (gradeText != null ? gradeText.gameObject.name : "Not found"));
+                //Debug.Log("Level Text Component: " + (levelText != null ? levelText.gameObject.name : "Not found"));
 
 
                 if (gradeText != null)

@@ -27,21 +27,24 @@ public class GodEssencePrefab : MonoBehaviour
         //Debug.Log("Player script initialization complete."); // Add this line
     }
 
+    //sets god info
     public void SetGodInfo(God god)
     {
         this.godPass = god;
     }
 
+    //Chooses a random god to increase the grade and deletes the others
     public void Condense()
     {
         List<God> essenceGods = gameController.GetAllEssenceGods();
         int random = Random.Range(0, 7);
         gameController.SetCondensedGod(essenceGods[random]);
+        Debug.Log("Set Condensed God");
         foreach(God god in essenceGods)
         {
             if(god != gameController.GetCondensedGod())
             {
-                Debug.Log("Deleting" + god);
+                //Debug.Log("Deleting" + god);
                 gameController.allSummonedGods.Remove(god);
             }
         }
@@ -49,12 +52,14 @@ public class GodEssencePrefab : MonoBehaviour
         gameController.WipeAllEssenceGods();
     }
 
+    //Clears the list of essensePrefabs
     public void WipeEssencePrefabs()
     {
         //Debug.Log("Wiping essence prefabs");
         gameController.WipeListEssencePrefabs();
     }
 
+    //Clears the list of essenseGods
     public void WipeEssenceGods()
     {
         gameController.WipeAllEssenceGods();
@@ -80,6 +85,7 @@ public class GodEssencePrefab : MonoBehaviour
 
     }
 
+    //set confirm button interactable and change color
     public void setButton(bool a)
     {
         Transform grandparent = transform.parent.parent.parent.parent;
@@ -103,6 +109,8 @@ public class GodEssencePrefab : MonoBehaviour
 
     }
 
+    //Adds or removes gods to EssenceList and Adds
+    //the prefab in order to be able to access UI elements
     public void addGodToList()
     {
         

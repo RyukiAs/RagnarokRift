@@ -32,6 +32,7 @@ public class GodsDisplay : MonoBehaviour
         }
     }
 
+    //Display gods given a start index and end index, will have buttons to make it a page like thing
     private void DisplayGodIcons()
     {
         // Get the summoned gods
@@ -60,8 +61,8 @@ public class GodsDisplay : MonoBehaviour
             Image secondIconImage = iconImages.Length >= 2 ? iconImages[1] : null;
 
             // Log the information for debugging
-            Debug.Log("Number of Image components: " + iconImages.Length);
-            Debug.Log("Second Image component: " + secondIconImage);
+            //Debug.Log("Number of Image components: " + iconImages.Length);
+            //Debug.Log("Second Image component: " + secondIconImage);
 
             if (secondIconImage != null)
             {
@@ -87,8 +88,8 @@ public class GodsDisplay : MonoBehaviour
                 // Add more conditions if you have other named text components
             }
 
-            Debug.Log("Grade Text Component: " + (gradeText != null ? gradeText.gameObject.name : "Not found"));
-            Debug.Log("Level Text Component: " + (levelText != null ? levelText.gameObject.name : "Not found"));
+            //Debug.Log("Grade Text Component: " + (gradeText != null ? gradeText.gameObject.name : "Not found"));
+            //Debug.Log("Level Text Component: " + (levelText != null ? levelText.gameObject.name : "Not found"));
 
 
             if (gradeText != null)

@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     public God CondensedGod;
 
     //used in Labors
-    public int Trial;
+    public int Trial = 1;
     public List<God> LaborsList = new List<God>();
     public List<GameObject> ListLaborsPrefabs = new List<GameObject>();
 

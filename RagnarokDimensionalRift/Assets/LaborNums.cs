@@ -22,18 +22,28 @@ public class LaborNums : MonoBehaviour
         DisplayTrialNums();
     }
 
+    //basically finds a lot of gameobjects in order to set a text component
     private void DisplayTrialNums()
     {
         int TrialNum = gameController.GetTrial();
+        int nextTrialNum = TrialNum + 1;
+        int futureTrialNum = TrialNum + 2;
+        Debug.Log("TrialNum = " + TrialNum);
 
         GameObject prefab = this.gameObject;
-        Transform currentTrial = prefab.transform.Find("CurrentTrial");
-        Transform nextTrial = prefab.transform.Find("NextTrial");
-        Transform futureTrial = prefab.transform.Find("FutureTrial");
+        Transform grid = prefab.transform.Find("Grid");
 
-        Transform currentTrialinfo = currentTrial.Find("TrialInfo");
-        Transform nextTrialinfo = nextTrial.Find("TrialInfo");
-        Transform futureTrialinfo = futureTrial.Find("TrialInfo");
+        Transform currentTrial = grid.Find("CurrentTrial");
+        Transform nextTrial = grid.Find("NextTrial");
+        Transform futureTrial = grid.Find("FutureTrial");
+
+        Transform currentTrialGroup = currentTrial.Find("Grouping");
+        Transform nextTrialGroup = nextTrial.Find("Grouping");
+        Transform futureTrialGroup = futureTrial.Find("Grouping");
+
+        Transform currentTrialinfo = currentTrialGroup.Find("TrialInfo");
+        Transform nextTrialinfo = nextTrialGroup.Find("TrialInfo");
+        Transform futureTrialinfo = futureTrialGroup.Find("TrialInfo");
 
         Transform currentTrialText = currentTrialinfo.Find("TrialNum");
         Transform nextTrialText = nextTrialinfo.Find("TrialNum");
@@ -44,18 +54,15 @@ public class LaborNums : MonoBehaviour
         TextMeshProUGUI nextTrialTextComponent = nextTrialText.GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI futureTrialTextComponent = futureTrialText.GetComponent<TextMeshProUGUI>();
 
-        //currentTrialText.text = TrialNum.ToString;
-        //nextTrialText.text = TrialNum.ToString;
-        //futureTrialText.text = TrialNum.ToString;
         if (currentTrialTextComponent != null && nextTrialTextComponent != null && futureTrialTextComponent != null)
         {
             currentTrialTextComponent.text = TrialNum.ToString();
-            nextTrialTextComponent.text = TrialNum.ToString();
-            futureTrialTextComponent.text = TrialNum.ToString();
+            nextTrialTextComponent.text = nextTrialNum.ToString();
+            futureTrialTextComponent.text = futureTrialNum.ToString();
         }
         else
         {
-            Debug.LogError("TextMeshProUGUI components not found.");
+            Debug.LogError("textmeshprougui components not found.");
         }
 
     }

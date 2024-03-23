@@ -1,27 +1,24 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 
-public class GodsDisplay : MonoBehaviour
+public class ShowLaborSelection : MonoBehaviour
 {
+
     [SerializeField]
     private GameObject godIconPrefab;
 
     [SerializeField]
     private Transform iconsParent;
 
-    [SerializeField]
-    private int startingGodIndex;
-
-    [SerializeField]
-    private int endGodIndex; // Adjust this value based on your needs
-
     private void OnEnable()
     {
         DisplayGodIcons();
     }
+
+    //deletes displays when leaving screen
     private void OnDisable()
     {
         Transform parentTransform = this.transform;
@@ -32,25 +29,30 @@ public class GodsDisplay : MonoBehaviour
         }
     }
 
-    //Display gods given a start index and end index, will have buttons to make it a page like thing
+    //displays the selection of god to condense
+    //Checks Active Grade to only display gods of current active grade
     private void DisplayGodIcons()
     {
         // Get the summoned gods
         List<God> summonedGods = GameController.Instance.GetAllSummonedGods();
 
+        int activeGrade = GameController.Instance.GetActiveGrade();
+
         // Instantiate and display icons for each summoned god
-        //foreach (God god in summonedGods)
-        for (int i = startingGodIndex; i <= endGodIndex && i < summonedGods.Count; i++)
+        foreach (God god in summonedGods)
+        //for (int i = startingGodIndex; i <= endGodIndex && i < summonedGods.Count; i++)
         {
+
             // Instantiate the god icon prefab
             GameObject godIcon = Instantiate(godIconPrefab, iconsParent);
 
-            GodScreenCanvas godScreenContent = godIcon.GetComponent<GodScreenCanvas>();
+            //GodScreenCanvas godScreenContent = godIcon.GetComponent<GodScreenCanvas>();
+            LaborSelectionP godScreenContent = godIcon.GetComponent<LaborSelectionP>();
             // Check if the script is attached
             if (godScreenContent != null)
             {
                 // Call the SetGodInfo method to set the information of the God
-                godScreenContent.SetGodInfo(summonedGods[i]);
+                godScreenContent.SetGodInfo(god);
             }
             else
             {
@@ -66,7 +68,7 @@ public class GodsDisplay : MonoBehaviour
 
             if (secondIconImage != null)
             {
-                secondIconImage.sprite = summonedGods[i].icon; //was icon
+                secondIconImage.sprite = god.icon;
             }
 
             //
@@ -75,7 +77,7 @@ public class GodsDisplay : MonoBehaviour
 
             foreach (TextMeshProUGUI textComponent in godIcon.GetComponentsInChildren<TextMeshProUGUI>())
             {
-                Debug.Log("Found Text Component: " + textComponent.gameObject.name);
+                //Debug.Log("Found Text Component: " + textComponent.gameObject.name);
 
                 if (textComponent.gameObject.name == "GradeText")
                 {
@@ -109,7 +111,7 @@ public class GodsDisplay : MonoBehaviour
                     { 11, "SSS" }
                 };
 
-                if (gradeMap.TryGetValue(summonedGods[i].grade, out string gradeString))
+                if (gradeMap.TryGetValue(god.grade, out string gradeString))
                 {
                     gradeText.text = gradeString;
                 }
@@ -118,14 +120,18 @@ public class GodsDisplay : MonoBehaviour
                     gradeText.text = "Unknown Grade";
                 }
             }
-            if(levelText != null)
+            if (levelText != null)
             {
-                levelText.text = summonedGods[i].level.ToString();
+                levelText.text = god.level.ToString();
             }
             else
             {
                 Debug.Log("Error in setting level");
             }
         }
+
+
+
+
     }
 }

@@ -15,8 +15,9 @@ public class God
     public int attack;
     public int defense;
     public string description;
+    public Sprite sprite;
 
-    public God(string godName, int grade, Sprite icon, string description)
+    public God(string godName, int grade, Sprite icon, string description, Sprite sprite)
     {
         this.godName = godName;
         this.grade = grade;
@@ -29,6 +30,7 @@ public class God
         this.baseDefense = 40;
         this.defense = this.baseDefense;
         this.description = description;
+        this.sprite = sprite;
     }
 
     public void CalculateUpgradedStats(int level)

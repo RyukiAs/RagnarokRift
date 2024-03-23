@@ -6,6 +6,7 @@ using System.Linq;
 
 public class ShowGodsEssence : MonoBehaviour
 {
+
     [SerializeField]
     private GameObject godIconPrefab;
 

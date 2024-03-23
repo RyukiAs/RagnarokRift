@@ -61,7 +61,7 @@ public class GodInfo : MonoBehaviour
     {
         if (godSprite != null)
         {
-            godSprite.sprite = godPass.icon;
+            godSprite.sprite = godPass.sprite; // was icon
         }
 
         if (levelText != null)

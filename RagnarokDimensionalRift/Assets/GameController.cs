@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
 
     //used in Labors
     public int Trial = 1;
-    public List<God> LaborsList = new List<God>();
+    public List<God> LaborsGodList = new List<God>();
     public List<GameObject> ListLaborsPrefabs = new List<GameObject>();
 
     //public GameObject ConfirmButton;
@@ -45,6 +45,25 @@ public class GameController : MonoBehaviour
     public void SetTrial(int num)
     {
         Trial = num;
+    }
+
+    public List<God> GetLaborGods()
+    {
+        return LaborsGodList;
+    }
+
+    public void WipeLaborGods()
+    {
+        LaborsGodList.Clear();
+    }
+    public List<GameObject> GetListLaborPrefabs()
+    {
+        return ListLaborsPrefabs;
+    }
+
+    public void WipeListLaborsPrefabs()
+    {
+        ListLaborsPrefabs.Clear();
     }
 
     public List<God> GetAllSummonedGods()

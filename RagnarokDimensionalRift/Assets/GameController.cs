@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     public int Trial = 1;
     public List<God> LaborsGodList = new List<God>();
     public List<GameObject> ListLaborsPrefabs = new List<GameObject>();
+    public God LaborEnemy;
 
     //public GameObject ConfirmButton;
 

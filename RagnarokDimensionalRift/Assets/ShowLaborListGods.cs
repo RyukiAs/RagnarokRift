@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ShowEssenceListGod : MonoBehaviour
+public class ShowLaborListGods : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
     private GameController gameController;
 
     [SerializeField]
     private God godPass;
+
+    [SerializeField] private Canvas canvas;
+
+    private RectTransform rectTransform;
+    private CanvasGroup canvasGroup;
 
     private void Start()
     {
@@ -24,21 +30,68 @@ public class ShowEssenceListGod : MonoBehaviour
     {
         DisplayGodIcons();
     }
+    private void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        Debug.Log("OnBeginDrag");
+        Transform sprite = this.gameObject.transform.Find("Sprite");
+        canvasGroup = sprite.gameObject.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = .8f;
+        canvasGroup.blocksRaycasts = false;
+
+    }
+    public void OnDrag(PointerEventData eventData)
+    {
+        Debug.Log("OnDrag");
+        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        Debug.Log("OnEndDrag"); 
+        Transform sprite = this.gameObject.transform.Find("Sprite");
+        canvasGroup = sprite.gameObject.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 1f;
+        canvasGroup.blocksRaycasts = true;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("test");
+        Transform sprite = this.gameObject.transform.Find("Sprite");
+        Transform icon = this.gameObject.transform.Find("Icon");
+        sprite.gameObject.SetActive(true);
+        icon.gameObject.SetActive(false);
+        //Image spriteImage = sprite.GetComponent<Image>();
+        //spriteImage.sprite = this.godPass.sprite;
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+
+    }
 
     //Will display all the Gods in EssenceGods
     private void DisplayGodIcons()
     {
         // Get the summoned gods
-        List<God> essenceGods = GameController.Instance.GetAllEssenceGods();
+        List<God> laborGods = GameController.Instance.GetLaborGods();
 
 
         Debug.Log(gameObject.name);
-        for (int i = 0; i <= 6; i++)
+        for (int i = 0; i <= 5; i++)
         {
-            string objName = "GodPrefabShowCondense" + i.ToString();
+            string objName = "LaborBattlePrefab" + i.ToString();
             if (gameObject.name == objName)
             {
-                this.godPass = essenceGods[i];
+                if (laborGods[i] != null)
+                {
+                    this.godPass = laborGods[i];
+                }
             }
         }
 
@@ -48,7 +101,9 @@ public class ShowEssenceListGod : MonoBehaviour
         Image[] iconImages = godIcon.GetComponentsInChildren<Image>(true);
         Image secondIconImage = iconImages.Length >= 2 ? iconImages[1] : null;
 
-
+        Transform sprite = this.gameObject.transform.Find("Sprite");
+        Image spriteImage = sprite.GetComponent<Image>();
+        spriteImage.sprite = this.godPass.sprite;
         //Debug.Log("Number of Image components: " + iconImages.Length);
         //Debug.Log("Second Image component: " + secondIconImage);
 
@@ -115,7 +170,4 @@ public class ShowEssenceListGod : MonoBehaviour
             Debug.Log("Error in setting level");
         }
     }
-
-
-
 }

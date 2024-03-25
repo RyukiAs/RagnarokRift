@@ -7,6 +7,9 @@ public class LaborNums : MonoBehaviour
 {
     private GameController gameController;
 
+    [SerializeField]
+    private int num;
+
     private void Start()
     {
         // Your existing code
@@ -19,13 +22,28 @@ public class LaborNums : MonoBehaviour
 
     private void OnEnable()
     {
-        DisplayTrialNums();
+        StartCoroutine(WaitForNums());
+        //DisplayTrialNums();
     }
+    private IEnumerator WaitForNums()
+    {
+        while (gameController == null || gameController.GetTrial() == 0)
+        {
+            yield return null; // Wait for the next frame
+        }
+
+        // Once the condensed god is set, proceed with displaying the god icons
+        this.num = gameController.GetTrial();
+        DisplayTrialNums();
+
+    }
+
 
     //basically finds a lot of gameobjects in order to set a text component
     private void DisplayTrialNums()
     {
-        int TrialNum = gameController.GetTrial();
+        //int TrialNum = gameController.GetTrial();
+        int TrialNum = this.num;
         int nextTrialNum = TrialNum + 1;
         int futureTrialNum = TrialNum + 2;
         Debug.Log("TrialNum = " + TrialNum);

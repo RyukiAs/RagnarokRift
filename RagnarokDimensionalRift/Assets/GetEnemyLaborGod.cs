@@ -22,12 +22,26 @@ public class GetEnemyLaborGod : MonoBehaviour
 
     private void OnEnable()
     {
+        //DisplayGod();
+        StartCoroutine(WaitForGod());
+    }
+
+    private IEnumerator WaitForGod()
+    {
+        while (gameController == null || gameController.LaborEnemy == null)
+        {
+            yield return null; // Wait for the next frame
+        }
+
+        // Once the condensed god is set, proceed with displaying the god icons
+        this.godPass = gameController.LaborEnemy;
         DisplayGod();
+
     }
 
     private void DisplayGod()
     {
-        godPass = gameController.LaborEnemy;
+        //godPass = gameController.LaborEnemy;
 
         Transform obj = this.gameObject.transform.Find("Image");
         Image sprite = obj.GetComponent<Image>();

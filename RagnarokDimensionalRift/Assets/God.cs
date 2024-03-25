@@ -60,30 +60,23 @@ public class God
         
     }
 
-    public bool attackFunction(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
+    public void attackFunction(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
     {
 
         int damage = attackingGod.attack - defendingGod.defense;
         int newhealth = defendingGod.health - damage;
         Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName} for {damage} damage.");
         defendingGod.health= newhealth;
-        if(newhealth < 1)
-        {
-            Debug.Log("battle is false");
-            return false;
-        }
-        else
-        {
-            Debug.Log("battle is true");
-            return true;
-        }
+        
 
     }
     public void MoveAndAttack(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
     {
         // Calculate the initial position of the attacking prefab
+        /*
         Vector2 initialPosition = attackingPrefab.transform.position;
-        Vector2 targetPosition = defendingPrefab.transform.position;
+        Vector3 offset = new Vector3(10f, 0f, 0f);
+        Vector2 targetPosition = defendingPrefab.transform.position + offset;
         float moveDuration = 3f;
 
         float elapsedTime = 0f;
@@ -105,10 +98,10 @@ public class God
 
         // Perform the attack after the movement is completed
         attackFunction(attackingGod, defendingGod, attackingPrefab, defendingPrefab);
+        */
+
     }
 
-    public void InitiateAttack(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
-    {
-        MoveAndAttack(attackingGod, defendingGod, attackingPrefab, defendingPrefab);
-    }
+    
+
 }

@@ -1,5 +1,7 @@
 using System.Buffers.Text;
+using TMPro;
 using UnityEngine;
+using System.Collections;
 
 [System.Serializable]
 public class God
@@ -58,5 +60,55 @@ public class God
         
     }
 
-    
+    public bool attackFunction(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
+    {
+
+        int damage = attackingGod.attack - defendingGod.defense;
+        int newhealth = defendingGod.health - damage;
+        Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName} for {damage} damage.");
+        defendingGod.health= newhealth;
+        if(newhealth < 1)
+        {
+            Debug.Log("battle is false");
+            return false;
+        }
+        else
+        {
+            Debug.Log("battle is true");
+            return true;
+        }
+
+    }
+    public void MoveAndAttack(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
+    {
+        // Calculate the initial position of the attacking prefab
+        Vector2 initialPosition = attackingPrefab.transform.position;
+        Vector2 targetPosition = defendingPrefab.transform.position;
+        float moveDuration = 3f;
+
+        float elapsedTime = 0f;
+        while (elapsedTime < moveDuration)
+        {
+            // Calculate the current position based on the interpolation factor
+            float t = elapsedTime / moveDuration;
+            Vector2 currentPosition = Vector2.Lerp(initialPosition, targetPosition, t);
+
+            // Move the attacking prefab towards the target position smoothly over time
+            attackingPrefab.transform.position = currentPosition;
+
+            // Update elapsed time
+            elapsedTime += Time.deltaTime;
+        }
+
+        // Ensure that the attacking prefab reaches the target position exactly
+        attackingPrefab.transform.position = targetPosition;
+
+        // Perform the attack after the movement is completed
+        attackFunction(attackingGod, defendingGod, attackingPrefab, defendingPrefab);
+    }
+
+    public void InitiateAttack(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
+    {
+        MoveAndAttack(attackingGod, defendingGod, attackingPrefab, defendingPrefab);
+    }
 }

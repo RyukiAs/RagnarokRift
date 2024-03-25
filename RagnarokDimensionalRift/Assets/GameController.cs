@@ -18,7 +18,9 @@ public class GameController : MonoBehaviour
     public int Trial = 1;
     public List<God> LaborsGodList = new List<God>();
     public List<GameObject> ListLaborsPrefabs = new List<GameObject>();
+    public List<GameObject> ListEnemyLaborsPrefabs = new List<GameObject>();
     public God LaborEnemy;
+
 
     //public GameObject ConfirmButton;
 
@@ -60,6 +62,10 @@ public class GameController : MonoBehaviour
     public List<GameObject> GetListLaborPrefabs()
     {
         return ListLaborsPrefabs;
+    }
+    public List<GameObject> GetListEnemyLaborPrefabs()
+    {
+        return ListEnemyLaborsPrefabs;
     }
 
     public void WipeListLaborsPrefabs()

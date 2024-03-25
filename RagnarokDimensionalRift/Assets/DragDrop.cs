@@ -40,7 +40,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnDrop(PointerEventData eventData)
     {
-        
+        rectTransform.anchoredPosition = eventData.pointerCurrentRaycast.worldPosition;
     }
 
 }

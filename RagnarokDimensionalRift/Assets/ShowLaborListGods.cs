@@ -10,7 +10,7 @@ public class ShowLaborListGods : MonoBehaviour, IPointerDownHandler, IBeginDragH
     private GameController gameController;
 
     [SerializeField]
-    private God godPass;
+    public God godPass;
 
     [SerializeField] private Canvas canvas;
 
@@ -72,6 +72,7 @@ public class ShowLaborListGods : MonoBehaviour, IPointerDownHandler, IBeginDragH
 
     public void OnDrop(PointerEventData eventData)
     {
+        //rectTransform.anchoredPosition = eventData.pointerCurrentRaycast.worldPosition;
 
     }
 
@@ -80,7 +81,11 @@ public class ShowLaborListGods : MonoBehaviour, IPointerDownHandler, IBeginDragH
     {
         // Get the summoned gods
         List<God> laborGods = GameController.Instance.GetLaborGods();
+        Transform iconObj = this.gameObject.transform.Find("Icon");
+        CanvasGroup canvasGroup= iconObj.GetComponent<CanvasGroup>();
 
+        canvasGroup.alpha = 1f; // see
+        canvasGroup.interactable = true; // interactable
 
         Debug.Log(gameObject.name);
         for (int i = 0; i <= 5; i++)
@@ -88,9 +93,43 @@ public class ShowLaborListGods : MonoBehaviour, IPointerDownHandler, IBeginDragH
             string objName = "LaborBattlePrefab" + i.ToString();
             if (gameObject.name == objName)
             {
-                if (laborGods[i] != null)
+                if (laborGods != null && i < laborGods.Count)
                 {
-                    this.godPass = laborGods[i];
+                    if (laborGods[i] != null)
+                    {
+                        Debug.Log("Set prefab god");
+                        this.godPass = laborGods[i];
+                    }
+                    else
+                    {
+                        Debug.LogWarning("No god found at index " + i);
+                        // Handle the case where laborGods[i] is null
+                        if (canvasGroup != null)
+                        {
+                            canvasGroup.alpha = 0f; // Transparent
+                            canvasGroup.interactable = false; // Uninteractable
+                        }
+                        else
+                        {
+                            Debug.LogWarning("CanvasGroup component not found.");
+                            // Handle the case where CanvasGroup component is not found
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("laborGods is null or index " + i + " is out of bounds.");
+                    if (canvasGroup != null)
+                    {
+                        canvasGroup.alpha = 0f; // Transparent
+                        canvasGroup.interactable = false; // Uninteractable
+                    }
+                    else
+                    {
+                        Debug.LogWarning("CanvasGroup component not found.");
+                        // Handle the case where CanvasGroup component is not found
+                    }
+                    // Handle the case where laborGods is null or index is out of bounds
                 }
             }
         }

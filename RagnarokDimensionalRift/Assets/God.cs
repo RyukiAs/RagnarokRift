@@ -16,6 +16,7 @@ public class God
     public int defense;
     public string description;
     public Sprite sprite;
+    public Vector2 position; //Vector2?
 
     public God(string godName, int grade, Sprite icon, string description, Sprite sprite)
     {
@@ -31,6 +32,7 @@ public class God
         this.defense = this.baseDefense;
         this.description = description;
         this.sprite = sprite;
+        this.position = new Vector2(0f,0f);
     }
 
     public void CalculateUpgradedStats(int level)

@@ -19258,6 +19258,7 @@ GameObject:
   - component: {fileID: 1067751571}
   - component: {fileID: 1067751570}
   - component: {fileID: 1067751569}
+  - component: {fileID: 1067751572}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -19349,6 +19350,32 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1067751572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067751567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4701d45d4243a5742bdaf3253d9d16e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  godPass:
+    godName: 
+    grade: 0
+    icon: {fileID: 0}
+    level: 0
+    baseHealth: 0
+    baseAttack: 0
+    baseDefense: 0
+    health: 0
+    attack: 0
+    defense: 0
+    description: 
+    sprite: {fileID: 0}
+    position: {x: 0, y: 0}
 --- !u!1 &1081261736
 GameObject:
   m_ObjectHideFlags: 0
@@ -29117,7 +29144,7 @@ GameObject:
   - component: {fileID: 1535864973}
   - component: {fileID: 1535864972}
   m_Layer: 5
-  m_Name: Button
+  m_Name: GoToMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29187,6 +29214,54 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1067751572}
+        m_TargetAssemblyTypeName: LaborSelectionP, Assembly-CSharp
+        m_MethodName: WipeEnemyLaborPrefabs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1067751572}
+        m_TargetAssemblyTypeName: LaborSelectionP, Assembly-CSharp
+        m_MethodName: WipeLaborGods
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1067751572}
+        m_TargetAssemblyTypeName: LaborSelectionP, Assembly-CSharp
+        m_MethodName: WipeLaborsPrefabs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1067751572}
+        m_TargetAssemblyTypeName: LaborSelectionP, Assembly-CSharp
+        m_MethodName: IncreaseNum
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1903455821}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive

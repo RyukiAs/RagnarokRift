@@ -38,6 +38,7 @@ public class LaborSelectionP : MonoBehaviour
                 "the Great Old Ones.";
             // Create a new god with a specified icon
             God newGod = new God("Cthulhu", TrialNum, godIcon, description, sprite);
+            newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
         }
@@ -51,6 +52,7 @@ public class LaborSelectionP : MonoBehaviour
                 "Greek mythology, also seen as the most important Greek God.";
             // Create a new god with a specified icon
             God newGod = new God("Zeus", TrialNum, godIcon, description, sprite);
+            newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
         }
@@ -63,6 +65,7 @@ public class LaborSelectionP : MonoBehaviour
                 "Twelve Greek Olympians.";
             // Create a new god with a specified icon
             God newGod = new God("Dionysus", TrialNum, godIcon, description, sprite);
+            newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
         }
@@ -76,6 +79,7 @@ public class LaborSelectionP : MonoBehaviour
                 "gods. Neptune is often depicted as a powerful and bearded deity, holding a trident";
             // Create a new god with a specified icon
             God newGod = new God("Neptune", TrialNum, godIcon, description, sprite);
+            newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
         }
@@ -88,6 +92,7 @@ public class LaborSelectionP : MonoBehaviour
                 "Described as having 3 eyes, multiple hands holding a trident and skull.";
             // Create a new god with a specified icon
             God newGod = new God("Shiva", TrialNum, godIcon, description, sprite);
+            newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
         }
@@ -102,6 +107,7 @@ public class LaborSelectionP : MonoBehaviour
                 "figure in Slavic folklore.";
             // Create a new god with a specified icon
             God newGod = new God("Baba Yaga", TrialNum, godIcon, description, sprite);
+            newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
         }
@@ -115,6 +121,7 @@ public class LaborSelectionP : MonoBehaviour
                 "depicted as a mighty and red-bearded warrior wielding the powerful hammer, Mjolnir.";
             // Create a new god with a specified icon
             God newGod = new God("Thor", TrialNum, godIcon, description, sprite);
+            newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
         }
@@ -128,6 +135,7 @@ public class LaborSelectionP : MonoBehaviour
                 "figures in the Shinto pantheon.";
             // Create a new god with a specified icon
             God newGod = new God("Amaterasu", TrialNum, godIcon, description, sprite);
+            newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
         }
@@ -142,6 +150,7 @@ public class LaborSelectionP : MonoBehaviour
                 "\"Lord of the Flies.\"";
             // Create a new god with a specified icon
             God newGod = new God("Beelzebub", TrialNum, godIcon, description, sprite);
+            newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
         }
@@ -155,6 +164,7 @@ public class LaborSelectionP : MonoBehaviour
                 "eyes and an immense wingspan.";
             // Create a new god with a specified icon
             God newGod = new God("Typhon", TrialNum, godIcon, description, sprite);
+            newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
         }
@@ -168,6 +178,7 @@ public class LaborSelectionP : MonoBehaviour
                 "different cultures.";
             // Create a new god with a specified icon
             God newGod = new God("Boogeyman", TrialNum, godIcon, description, sprite);
+            newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
         }
     }
@@ -183,6 +194,15 @@ public class LaborSelectionP : MonoBehaviour
     {
         //Debug.Log("Wiping essence prefabs");
         gameController.WipeListLaborsPrefabs();
+    }
+
+    public void WipeEnemyLaborPrefabs(){
+        gameController.WipeListEnemyLaborPrefabs();
+    }
+
+    public void IncreaseNum(){
+        int num = gameController.GetTrial();
+        gameController.SetTrial(num+1);
     }
 
     //Clears the list of essenseGods

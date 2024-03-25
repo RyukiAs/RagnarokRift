@@ -68,6 +68,10 @@ public class GameController : MonoBehaviour
         return ListEnemyLaborsPrefabs;
     }
 
+    public void WipeListEnemyLaborPrefabs(){
+        ListEnemyLaborsPrefabs.Clear();
+    }
+
     public void WipeListLaborsPrefabs()
     {
         ListLaborsPrefabs.Clear();

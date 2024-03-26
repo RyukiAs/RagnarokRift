@@ -19,6 +19,7 @@ public class God
     public string description;
     public Sprite sprite;
     public Vector2 position; //Vector2?
+    public bool canAttack;
 
     public God(string godName, int grade, Sprite icon, string description, Sprite sprite)
     {
@@ -28,13 +29,14 @@ public class God
         this.level = 1;
         this.baseHealth = 1000;
         this.health = this.baseHealth;
-        this.baseAttack = 75;
+        this.baseAttack = 130;
         this.attack = this.baseAttack;
-        this.baseDefense = 40;
+        this.baseDefense = 30;
         this.defense = this.baseDefense;
         this.description = description;
         this.sprite = sprite;
         this.position = new Vector2(0f,0f);
+        this.canAttack = true;
     }
 
     public void CalculateUpgradedStats(int level)
@@ -58,48 +60,6 @@ public class God
         this.attack = (int)attackResult;
         this.defense = (int)defResult;
         
-    }
-
-    public void attackFunction(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
-    {
-
-        int damage = attackingGod.attack - defendingGod.defense;
-        int newhealth = defendingGod.health - damage;
-        Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName} for {damage} damage.");
-        defendingGod.health= newhealth;
-        
-
-    }
-    public void MoveAndAttack(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
-    {
-        // Calculate the initial position of the attacking prefab
-        /*
-        Vector2 initialPosition = attackingPrefab.transform.position;
-        Vector3 offset = new Vector3(10f, 0f, 0f);
-        Vector2 targetPosition = defendingPrefab.transform.position + offset;
-        float moveDuration = 3f;
-
-        float elapsedTime = 0f;
-        while (elapsedTime < moveDuration)
-        {
-            // Calculate the current position based on the interpolation factor
-            float t = elapsedTime / moveDuration;
-            Vector2 currentPosition = Vector2.Lerp(initialPosition, targetPosition, t);
-
-            // Move the attacking prefab towards the target position smoothly over time
-            attackingPrefab.transform.position = currentPosition;
-
-            // Update elapsed time
-            elapsedTime += Time.deltaTime;
-        }
-
-        // Ensure that the attacking prefab reaches the target position exactly
-        attackingPrefab.transform.position = targetPosition;
-
-        // Perform the attack after the movement is completed
-        attackFunction(attackingGod, defendingGod, attackingPrefab, defendingPrefab);
-        */
-
     }
 
     

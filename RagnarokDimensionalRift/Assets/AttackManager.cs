@@ -1,73 +1,185 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AttackManager : MonoBehaviour
 {
-    // New members for moving and attacking
-    private Vector2 initialPosition;
-    private Vector2 targetPosition;
-    private float moveDuration = 3f;
-    private float elapsedTime = 0f;
-    private bool isAttacking = false;
+    private GameController gameController;
 
-    // New method for moving and attacking
-    public void MoveAndAttack(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
+    private bool canAttack = true; // Flag to track if a god can attack
+    private float cooldownDuration = 1f; // Cooldown duration in seconds
+    private float offsetDuration = 0.1f; // Offset duration between attacks in seconds
+
+    private void Start()
     {
-        // Calculate the initial position of the attacking prefab
-        initialPosition = attackingPrefab.transform.position;
-        Vector3 offset = new Vector3(10f, 0f, 0f);
-        targetPosition = defendingPrefab.transform.position + offset;
-
-        // Start the attack animation
-        isAttacking = true;
-    }
-
-    // Update method to handle moving and attacking
-    private void Update()
-    {
-        if (isAttacking)
+        // Your existing code
+        gameController = GameController.Instance;
+        if (gameController == null)
         {
-            if (elapsedTime < moveDuration)
-            {
-                // Calculate the current position based on the interpolation factor
-                float t = elapsedTime / moveDuration;
-                Vector2 currentPosition = Vector2.Lerp(initialPosition, targetPosition, t);
-
-                // Move the attacking prefab towards the target position smoothly over time
-                // Note: You may need to reference the attacking prefab in some way to move it
-                // For example, you might have a reference to it as a member variable of the God class
-                // or pass it as a parameter to the MoveAndAttack method
-                // attackingPrefab.transform.position = currentPosition;
-
-                // Update elapsed time
-                elapsedTime += Time.deltaTime;
-            }
-            else
-            {
-                // Ensure that the attacking prefab reaches the target position exactly
-                // Note: You may need to set the final position here
-                // attackingPrefab.transform.position = targetPosition;
-
-                // Perform the attack after the movement is completed
-                // Note: You may need to call the attack function here
-                // attackFunction(attackingPrefab, defendingPrefab);
-
-                // Reset variables for the next attack
-                isAttacking = false;
-                elapsedTime = 0f;
-            }
+            Debug.Log("GameController instance not found. Make sure GameControllerInitializer script is in the scene.");
         }
     }
-    public void attackFunction(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
+
+    public void StartBattle()
     {
+        StartCoroutine(Battle());
+    }
+    /*
+    public IEnumerator Battle()
+    {
+        Debug.Log("Battling");
 
+        List<God> attackingGods = gameController.GetLaborGods();
+        List<GameObject> attackingPrefabs = gameController.GetListLaborPrefabs();
+        List<GameObject> defendingPrefabs = gameController.GetListEnemyLaborPrefabs();
+        God enemyGod = gameController.LaborEnemy;
+
+        bool battleInProgress = true;
+
+        while (battleInProgress)
+        {
+            battleInProgress = false; // Assume battle ends unless an attack is initiated
+
+            for (int i = 0; i < attackingGods.Count; i++)
+            {
+                if (attackingGods[i].health > 0 && enemyGod.health > 0)
+                {
+                    // Initiate attack for each attacking god
+                    yield return MoveAndAttack(attackingGods[i], enemyGod, attackingPrefabs[i], defendingPrefabs[0]);
+
+                    // Check if battle is still in progress
+                    if (enemyGod.health > 0)
+                    {
+                        battleInProgress = true;
+                    }
+                }
+            }
+            yield return MoveAndAttack(enemyGod, attackingGods[0], defendingPrefabs[0], attackingPrefabs[0]);
+        }
+
+        Debug.Log("Battle ended.");
+    }
+    */
+    private IEnumerator Cooldown(God god)
+    {
+        yield return new WaitForSeconds(cooldownDuration);
+        canAttack = true; // Reset canAttack flag after cooldown
+    }
+    public IEnumerator Battle()
+    {
+        Debug.Log("Battling");
+
+        List<God> attackingGods = gameController.GetLaborGods();
+        List<GameObject> attackingPrefabs = gameController.GetListLaborPrefabs();
+        List<GameObject> defendingPrefabs = gameController.GetListEnemyLaborPrefabs();
+        God enemyGod = gameController.LaborEnemy;
+
+        bool battleInProgress = true;
+
+        while (battleInProgress)
+        {
+            //battleInProgress = false; // Assume battle ends unless an attack is initiated
+
+            for (int i = 0; i < attackingGods.Count; i++)
+            {
+                if (attackingGods[i].health > 0 && enemyGod.health > 0 && canAttack)
+                {
+                    // Initiate attack for each attacking god
+                    StartCoroutine(MoveAndAttack(attackingGods[i], enemyGod, attackingPrefabs[i], defendingPrefabs[0]));
+
+                    // Set canAttack to false and start cooldown
+                    attackingGods[i].canAttack = false;
+                    StartCoroutine(Cooldown(attackingGods[i]));
+
+                    // Set battle in progress flag to true
+                    battleInProgress = true;
+
+                    // Wait for offset duration before next attack
+                    yield return new WaitForSeconds(offsetDuration);
+                }
+            }
+
+            // Check if enemy god is defeated
+            if (enemyGod.health <= 0)
+            {
+                battleInProgress = false;
+                Debug.Log("Enemy god defeated.");
+                break;
+            }
+
+            // Wait for all attacks to finish
+            yield return new WaitForSeconds(offsetDuration);
+        }
+
+        Debug.Log("Battle ended.");
+    }
+    private IEnumerator MoveAndAttack(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
+    {
+        Vector3 initialPosition = attackingPrefab.transform.position;
+        Vector3 offset = new Vector3(30f, 0f, 0f);
+        Vector3 targetPosition = defendingPrefab.transform.position - offset;
+        Vector3 returnPosition = initialPosition;
+
+        float moveDuration = 1f;
+        float elapsedTime = 0f;
+
+        // Move attacking prefab towards target position
+        while (elapsedTime < moveDuration)
+        {
+            attackingPrefab.transform.position = Vector3.Lerp(attackingPrefab.transform.position, targetPosition, elapsedTime / moveDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure attacking prefab reaches the target position
+        attackingPrefab.transform.position = targetPosition;
+
+        // Perform attack
+        Attack(attackingGod, defendingGod);
+
+        //Image sprite = defendingPrefab.GetComponent<Image>();
+        //sprite.color = Color.red;
+        // Get the sprite renderer component of the defending prefab
+        Transform imageObj = defendingPrefab.transform.Find("Image");
+        Image defendingImage = imageObj.GetComponent<Image>();
+
+        // Store the original color of the defending prefab
+        Color originalColor = defendingImage.color;
+
+        // Change the color of the defending prefab to red temporarily
+        defendingImage.color = Color.red;
+        // Wait for a short delay after the attack
+        //yield return new WaitForSeconds(0.5f);
+
+        // Move back to the initial position
+        elapsedTime = 0f;
+        moveDuration = 1f;
+        while (elapsedTime < moveDuration)
+        {
+            attackingPrefab.transform.position = Vector3.Lerp(targetPosition, returnPosition, elapsedTime / moveDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        defendingImage.color = originalColor;
+        //sprite.color = Color.red;
+
+        // Ensure it returns to the initial position
+        attackingPrefab.transform.position = returnPosition;
+    }
+
+    private void Attack(God attackingGod, God defendingGod)
+    {
         int damage = attackingGod.attack - defendingGod.defense;
-        int newhealth = defendingGod.health - damage;
-        Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName} for {damage} damage.");
-        defendingGod.health = newhealth;
-
-
+        if (damage > 0)
+        {
+            defendingGod.health -= damage;
+            Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName} for {damage} damage.");
+        }
+        else
+        {
+            Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName}, but no damage is dealt.");
+        }
     }
 
 }

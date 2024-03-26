@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
             else if (num == 6)
             {
                 // Load the icon sprite (you can set this in the Unity Editor)
-                Sprite sprite = Resources.Load<Sprite>("GodSprites/BabaYagaSprite");
+                Sprite sprite = Resources.Load<Sprite>("GodSprites/BabaYagaSpriteFlipped");
                 Sprite godIcon = Resources.Load<Sprite>("GodIcons/BabaYagaIcon");
                 string description = "Baba Yaga - supernatural and often malevolent character, appearing as a hag " +
                     "or witch with distinctive features. She is known for her bizarre and unsettling behavior, living " +
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
             else if (num == 10)
             {
                 // Load the icon sprite (you can set this in the Unity Editor)
-                Sprite sprite = Resources.Load<Sprite>("GodSprites/TyphonSprite");
+                Sprite sprite = Resources.Load<Sprite>("GodSprites/TyphonSpriteFlipped");
                 Sprite godIcon = Resources.Load<Sprite>("GodIcons/TyphonIcon");
                 string description = "Typhon - Monstrous figure in Greek mythology, often regarded as one of the " +
                     "most powerful and fearsome beings. Described as a colossal, hundred-headed monster with fiery " +

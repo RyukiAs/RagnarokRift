@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,7 +55,37 @@ public class Summon1x : MonoBehaviour
         spriteImage.sprite = godpass.sprite;
 
         //setting the name
+        Transform name = canvas.transform.Find("GodName");
+        TextMeshProUGUI nameString = name.GetComponent<TextMeshProUGUI>();
+        nameString.text = godpass.godName;
 
+        //setting the grade
+        Transform grade = canvas.transform.Find("Grade");
+        Transform gradeTransform = grade.Find("varGrade");
+        TextMeshProUGUI gradeText = gradeTransform.GetComponent<TextMeshProUGUI>();
+        Dictionary<int, string> gradeMap = new Dictionary<int, string>
+                {
+                    { 1, "FFF" },
+                    { 2, "FF" },
+                    { 3, "F" },
+                    { 4, "E" },
+                    { 5, "D" },
+                    { 6, "C" },
+                    { 7, "B" },
+                    { 8, "A" },
+                    { 9, "S" },
+                    { 10, "SS" },
+                    { 11, "SSS" }
+                };
+
+        if (gradeMap.TryGetValue(godpass.grade, out string gradeString))
+        {
+            gradeText.text = gradeString;
+        }
+        else
+        {
+            gradeText.text = "Unknown Grade";
+        }
     }
 
 }

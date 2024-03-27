@@ -7,9 +7,14 @@ public class AttackManager : MonoBehaviour
 {
     private GameController gameController;
 
-    private bool canAttack = true; // Flag to track if a god can attack
     private float cooldownDuration = 1f; // Cooldown duration in seconds
     private float offsetDuration = 0.1f; // Offset duration between attacks in seconds
+    private List<GameObject> Team1Prefabs = new List<GameObject>();
+    private List<GameObject> Team2Prefabs = new List<GameObject>();
+    private List<GameObject> AttackOrder = new List<GameObject>();
+    private List<God> team1Gods = new List<God>();
+    private List<God> team2Gods = new List<God>();
+    //private List<God> 
 
     private void Start()
     {
@@ -19,53 +24,51 @@ public class AttackManager : MonoBehaviour
         {
             Debug.Log("GameController instance not found. Make sure GameControllerInitializer script is in the scene.");
         }
+
     }
 
-    public void StartBattle()
+    public void StartBattle(List<GameObject> team1, List<GameObject> team2)
     {
-        StartCoroutine(Battle());
-    }
-    /*
-    public IEnumerator Battle()
-    {
-        Debug.Log("Battling");
+        AttackOrder.Clear();
+        team1Gods.Clear();
+        team2Gods.Clear();
 
-        List<God> attackingGods = gameController.GetLaborGods();
-        List<GameObject> attackingPrefabs = gameController.GetListLaborPrefabs();
-        List<GameObject> defendingPrefabs = gameController.GetListEnemyLaborPrefabs();
-        God enemyGod = gameController.LaborEnemy;
+        Team1Prefabs = team1;
+        Team2Prefabs = team2;
 
-        bool battleInProgress = true;
-
-        while (battleInProgress)
+        foreach (GameObject prefab in Team1Prefabs)
         {
-            battleInProgress = false; // Assume battle ends unless an attack is initiated
-
-            for (int i = 0; i < attackingGods.Count; i++)
+            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
+            God god = script.getGod();
+            if (god != null)
             {
-                if (attackingGods[i].health > 0 && enemyGod.health > 0)
-                {
-                    // Initiate attack for each attacking god
-                    yield return MoveAndAttack(attackingGods[i], enemyGod, attackingPrefabs[i], defendingPrefabs[0]);
-
-                    // Check if battle is still in progress
-                    if (enemyGod.health > 0)
-                    {
-                        battleInProgress = true;
-                    }
-                }
+                team1Gods.Add(god);
             }
-            yield return MoveAndAttack(enemyGod, attackingGods[0], defendingPrefabs[0], attackingPrefabs[0]);
         }
 
-        Debug.Log("Battle ended.");
+        // Extract the God component from each prefab in team2Prefabs
+        foreach (GameObject prefab in Team2Prefabs)
+        {
+            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
+            God god = script.getGod();
+            if (god != null)
+            {
+                team2Gods.Add(god);
+            }
+        }
+
+        StartCoroutine(Battle());
+    }
+
+    /*
+    public IEnumerator SetAttack()
+    {
+        List<GameObject> attackOrder;
+        int rand = Random.range(1,11)
+        if(rand.range
     }
     */
-    private IEnumerator Cooldown(God god)
-    {
-        yield return new WaitForSeconds(cooldownDuration);
-        canAttack = true; // Reset canAttack flag after cooldown
-    }
+
     public IEnumerator Battle()
     {
         Debug.Log("Battling");
@@ -83,7 +86,7 @@ public class AttackManager : MonoBehaviour
 
             for (int i = 0; i < attackingGods.Count; i++)
             {
-                if (attackingGods[i].health > 0 && enemyGod.health > 0 && canAttack)
+                if (attackingGods[i].health > 0 && enemyGod.health > 0 && attackingGods[i].canAttack)
                 {
                     // Initiate attack for each attacking god
                     StartCoroutine(MoveAndAttack(attackingGods[i], enemyGod, attackingPrefabs[i], defendingPrefabs[0]));
@@ -113,6 +116,11 @@ public class AttackManager : MonoBehaviour
         }
 
         Debug.Log("Battle ended.");
+    }
+    private IEnumerator Cooldown(God god)
+    {
+        yield return new WaitForSeconds(cooldownDuration);
+        god.canAttack = true; // Reset canAttack flag after cooldown
     }
     private IEnumerator MoveAndAttack(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
     {

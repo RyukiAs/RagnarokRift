@@ -69,6 +69,8 @@ public class LaborBattle : MonoBehaviour
             godIconRectTransform.anchoredPosition = god.position;
             Image godSprite = godIcon.GetComponentInChildren<Image>();
             godSprite.sprite = god.sprite;
+            SetGodOnPrefab script = godIcon.GetComponent<SetGodOnPrefab>();
+            script.setGod(god);
         }
 
         God enemyGod = gameController.LaborEnemy;
@@ -78,11 +80,10 @@ public class LaborBattle : MonoBehaviour
         enemyGodRectTransform.anchoredPosition = enemyGod.position;
         Image enemyGodSprite = enemyPrefab.GetComponentInChildren<Image>();
         enemyGodSprite.sprite = enemyGod.sprite;
+        SetGodOnPrefab script2 = enemyPrefab.GetComponent<SetGodOnPrefab>();
+        script2.setGod(enemyGod);
 
-
-
-
-        attackManager.StartBattle();
+        attackManager.StartBattle(gameController.ListEnemyLaborsPrefabs, gameController.ListLaborsPrefabs);
         //StartCoroutine(Battle());
     }
     

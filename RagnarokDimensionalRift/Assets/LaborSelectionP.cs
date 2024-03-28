@@ -37,7 +37,7 @@ public class LaborSelectionP : MonoBehaviour
                 "a scaly body, and bat-like wings. It is part of a pantheon of cosmic deities known as " +
                 "the Great Old Ones.";
             // Create a new god with a specified icon
-            God newGod = new God("Cthulhu", TrialNum, godIcon, description, sprite);
+            God newGod = new God("Cthulhu", TrialNum, godIcon, description, sprite, false);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -51,7 +51,7 @@ public class LaborSelectionP : MonoBehaviour
                 "as his symbol of authority. One of the big three of the Greek Gods. The god of lighting in " +
                 "Greek mythology, also seen as the most important Greek God.";
             // Create a new god with a specified icon
-            God newGod = new God("Zeus", TrialNum, godIcon, description, sprite);
+            God newGod = new God("Zeus", TrialNum, godIcon, description, sprite, false);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -64,7 +64,7 @@ public class LaborSelectionP : MonoBehaviour
             string description = "Dionysus - known as the god of wine, festivities, and theater. One of the " +
                 "Twelve Greek Olympians.";
             // Create a new god with a specified icon
-            God newGod = new God("Dionysus", TrialNum, godIcon, description, sprite);
+            God newGod = new God("Dionysus", TrialNum, godIcon, description, sprite, false);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -78,7 +78,7 @@ public class LaborSelectionP : MonoBehaviour
                 "He is one of the twelve Olympian deities and holds a position of great importance among the Roman " +
                 "gods. Neptune is often depicted as a powerful and bearded deity, holding a trident";
             // Create a new god with a specified icon
-            God newGod = new God("Neptune", TrialNum, godIcon, description, sprite);
+            God newGod = new God("Neptune", TrialNum, godIcon, description, sprite, false);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -91,7 +91,7 @@ public class LaborSelectionP : MonoBehaviour
             string description = "Shiva - Hindu god of destruction. One of the most important Hindu Gods. " +
                 "Described as having 3 eyes, multiple hands holding a trident and skull.";
             // Create a new god with a specified icon
-            God newGod = new God("Shiva", TrialNum, godIcon, description, sprite);
+            God newGod = new God("Shiva", TrialNum, godIcon, description, sprite, false);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -106,7 +106,7 @@ public class LaborSelectionP : MonoBehaviour
                 "in a hut that stands on chicken legs and surrounded by a fence made of human bones. Prominent " +
                 "figure in Slavic folklore.";
             // Create a new god with a specified icon
-            God newGod = new God("Baba Yaga", TrialNum, godIcon, description, sprite);
+            God newGod = new God("Baba Yaga", TrialNum, godIcon, description, sprite, false);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -120,7 +120,7 @@ public class LaborSelectionP : MonoBehaviour
                 "He is a member of the Aesir, the principal group of gods in the Norse pantheon, and is often " +
                 "depicted as a mighty and red-bearded warrior wielding the powerful hammer, Mjolnir.";
             // Create a new god with a specified icon
-            God newGod = new God("Thor", TrialNum, godIcon, description, sprite);
+            God newGod = new God("Thor", TrialNum, godIcon, description, sprite, false);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -134,7 +134,7 @@ public class LaborSelectionP : MonoBehaviour
                 "revered as the goddess of the sun and considered one of the most important and benevolent " +
                 "figures in the Shinto pantheon.";
             // Create a new god with a specified icon
-            God newGod = new God("Amaterasu", TrialNum, godIcon, description, sprite);
+            God newGod = new God("Amaterasu", TrialNum, godIcon, description, sprite, false);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -149,7 +149,7 @@ public class LaborSelectionP : MonoBehaviour
                 "historical roots in the worship of a Philistine god named Baal-Zebub, which means " +
                 "\"Lord of the Flies.\"";
             // Create a new god with a specified icon
-            God newGod = new God("Beelzebub", TrialNum, godIcon, description, sprite);
+            God newGod = new God("Beelzebub", TrialNum, godIcon, description, sprite, false);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -162,8 +162,8 @@ public class LaborSelectionP : MonoBehaviour
             string description = "Typhon - Monstrous figure in Greek mythology, often regarded as one of the " +
                 "most powerful and fearsome beings. Described as a colossal, hundred-headed monster with fiery " +
                 "eyes and an immense wingspan.";
-            // Create a new god with a specified icon
-            God newGod = new God("Typhon", TrialNum, godIcon, description, sprite);
+            // Create a new god with a specified icon   
+            God newGod = new God("Typhon", TrialNum, godIcon, description, sprite, false);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -177,7 +177,7 @@ public class LaborSelectionP : MonoBehaviour
                 "amorphous. It may take on various forms, allowing it to embody the fears and imagination of " +
                 "different cultures.";
             // Create a new god with a specified icon
-            God newGod = new God("Boogeyman", TrialNum, godIcon, description, sprite);
+            God newGod = new God("Boogeyman", TrialNum, godIcon, description, sprite, false);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
         }

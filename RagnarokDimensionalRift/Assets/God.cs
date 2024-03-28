@@ -20,8 +20,9 @@ public class God
     public Sprite sprite;
     public Vector2 position; //Vector2?
     public bool canAttack;
+    public bool attacking;
 
-    public God(string godName, int grade, Sprite icon, string description, Sprite sprite)
+    public God(string godName, int grade, Sprite icon, string description, Sprite sprite, bool attacking=true)
     {
         this.godName = godName;
         this.grade = grade;

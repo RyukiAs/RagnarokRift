@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,10 @@ public class AttackManager : MonoBehaviour
     private float offsetDuration = 0.1f; // Offset duration between attacks in seconds
     private List<GameObject> Team1Prefabs = new List<GameObject>();
     private List<GameObject> Team2Prefabs = new List<GameObject>();
-    private List<GameObject> AttackOrder = new List<GameObject>();
+    private List<GameObject> Holder = new List<GameObject>();
+
+    private List<GameObject> AttackOrderPrefabs = new List<GameObject>();
+    private List<God> AttackOrderGods = new List<God>();
     private List<God> team1Gods = new List<God>();
     private List<God> team2Gods = new List<God>();
     //private List<God> 
@@ -29,7 +33,8 @@ public class AttackManager : MonoBehaviour
 
     public void StartBattle(List<GameObject> team1, List<GameObject> team2)
     {
-        AttackOrder.Clear();
+        AttackOrderPrefabs.Clear();
+        AttackOrderGods.Clear();
         team1Gods.Clear();
         team2Gods.Clear();
 
@@ -56,8 +61,41 @@ public class AttackManager : MonoBehaviour
                 team2Gods.Add(god);
             }
         }
+        Holder = Team1Prefabs;
+        foreach (GameObject prefab in Team2Prefabs)
+        {
+            Holder.Add(prefab);
+        }
+        Holder = SortPrefabsByXPosition();
 
-        StartCoroutine(Battle());
+        StartCoroutine(startFight());
+    }
+
+    private List<GameObject> SortPrefabsByXPosition()
+    {
+        // Create a list to store the sorted prefabs
+        List<GameObject> sortedPrefabs = new List<GameObject>();
+
+        // Dictionary to store prefab and its distance from X position 0
+        Dictionary<GameObject, float> prefabDistanceMap = new Dictionary<GameObject, float>();
+
+        // Calculate the distance of each prefab's X position from 0 and store in the dictionary
+        foreach (GameObject prefab in Holder)
+        {
+            float distance = Mathf.Abs(prefab.transform.position.x);
+            prefabDistanceMap.Add(prefab, distance);
+        }
+
+        // Sort the dictionary by distance
+        var sortedDict = prefabDistanceMap.OrderBy(x => x.Value);
+
+        // Add the sorted prefabs to the list
+        foreach (var entry in sortedDict)
+        {
+            sortedPrefabs.Add(entry.Key);
+        }
+
+        return sortedPrefabs;
     }
 
     /*
@@ -68,7 +106,7 @@ public class AttackManager : MonoBehaviour
         if(rand.range
     }
     */
-
+    /*
     public IEnumerator Battle()
     {
         Debug.Log("Battling");
@@ -117,11 +155,67 @@ public class AttackManager : MonoBehaviour
 
         Debug.Log("Battle ended.");
     }
+    */
+
+    public IEnumerator startFight()
+    {
+        bool battleInProgress = true;
+
+        int currentIndex = 0;
+        int totalPrefabs = Holder.Count;
+
+        while (battleInProgress)
+        {
+            // Get the next prefab to attack
+            GameObject prefabToAttack = Holder[currentIndex];
+            SetGodOnPrefab script = prefabToAttack.GetComponent<SetGodOnPrefab>();
+            God godToAttack = script.getGod();
+            GameObject prefabToDefend = new GameObject();
+
+            if(godToAttack.health> 0)
+            {
+                bool attack = godToAttack.attacking;
+                if(attack)
+                {
+                    prefabToDefend = GetClosestAliveEnemy(Team2Prefabs);
+                }
+                else
+                {
+                    prefabToDefend = GetClosestAliveEnemy(Team1Prefabs);
+                }
+
+                // Initiate attack for the god
+                StartCoroutine(Move(prefabToAttack, prefabToDefend));
+
+                // Move to the next prefab in the list
+                currentIndex = (currentIndex + 1) % totalPrefabs;
+
+                // Wait for offset duration before next attack
+                yield return new WaitForSeconds(offsetDuration);
+                yield return null;
+            }
+            
+        }
+    }
+
+    public GameObject GetClosestAliveEnemy(List<GameObject> list)
+    {
+        return new GameObject();
+    }
+
+
     private IEnumerator Cooldown(God god)
     {
         yield return new WaitForSeconds(cooldownDuration);
         god.canAttack = true; // Reset canAttack flag after cooldown
     }
+
+    private IEnumerator Move(GameObject attackPrefab, GameObject defendPrefab)
+    {
+        yield return null;
+    }
+
+    /*
     private IEnumerator MoveAndAttack(God attackingGod, God defendingGod, GameObject attackingPrefab, GameObject defendingPrefab)
     {
         Vector3 initialPosition = attackingPrefab.transform.position;
@@ -189,5 +283,6 @@ public class AttackManager : MonoBehaviour
             Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName}, but no damage is dealt.");
         }
     }
+    */
 
 }

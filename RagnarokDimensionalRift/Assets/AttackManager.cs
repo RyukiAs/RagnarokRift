@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.WSA;
 
 public class AttackManager : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class AttackManager : MonoBehaviour
     private List<GameObject> Holder = new List<GameObject>();
 
     private List<GameObject> AttackOrderPrefabs = new List<GameObject>();
+    private List<GameObject> Team1AttackOrderPrefabs= new List<GameObject>();
+    private List<GameObject> Team2AttackOrderPrefabs = new List<GameObject>();
+    private GameObject attackPrefab;
+    private GameObject defendPrefab;
     private List<God> AttackOrderGods = new List<God>();
     private List<God> team1Gods = new List<God>();
     private List<God> team2Gods = new List<God>();
@@ -66,21 +71,29 @@ public class AttackManager : MonoBehaviour
         {
             Holder.Add(prefab);
         }
-        Holder = SortPrefabsByXPosition();
+        SortPrefabsByXPosition();
 
         StartCoroutine(startFight());
     }
 
-    private List<GameObject> SortPrefabsByXPosition()
+    private void SortPrefabsByXPosition()
     {
-        // Create a list to store the sorted prefabs
-        List<GameObject> sortedPrefabs = new List<GameObject>();
+        // Clear previous data
+        Team1AttackOrderPrefabs.Clear();
+        Team2AttackOrderPrefabs.Clear();
+        Holder.Clear();
 
         // Dictionary to store prefab and its distance from X position 0
         Dictionary<GameObject, float> prefabDistanceMap = new Dictionary<GameObject, float>();
 
         // Calculate the distance of each prefab's X position from 0 and store in the dictionary
-        foreach (GameObject prefab in Holder)
+        foreach (GameObject prefab in Team1Prefabs)
+        {
+            float distance = Mathf.Abs(prefab.transform.position.x);
+            prefabDistanceMap.Add(prefab, distance);
+        }
+
+        foreach (GameObject prefab in Team2Prefabs)
         {
             float distance = Mathf.Abs(prefab.transform.position.x);
             prefabDistanceMap.Add(prefab, distance);
@@ -89,13 +102,19 @@ public class AttackManager : MonoBehaviour
         // Sort the dictionary by distance
         var sortedDict = prefabDistanceMap.OrderBy(x => x.Value);
 
-        // Add the sorted prefabs to the list
+        // Add the sorted prefabs to the global variables
         foreach (var entry in sortedDict)
         {
-            sortedPrefabs.Add(entry.Key);
+            Holder.Add(entry.Key);
+            if (Team1Prefabs.Contains(entry.Key))
+            {
+                Team1AttackOrderPrefabs.Add(entry.Key);
+            }
+            else if (Team2Prefabs.Contains(entry.Key))
+            {
+                Team2AttackOrderPrefabs.Add(entry.Key);
+            }
         }
-
-        return sortedPrefabs;
     }
 
     /*
@@ -167,25 +186,44 @@ public class AttackManager : MonoBehaviour
         while (battleInProgress)
         {
             // Get the next prefab to attack
-            GameObject prefabToAttack = Holder[currentIndex];
-            SetGodOnPrefab script = prefabToAttack.GetComponent<SetGodOnPrefab>();
+            attackPrefab = Holder[currentIndex];
+            SetGodOnPrefab script = attackPrefab.GetComponent<SetGodOnPrefab>();
             God godToAttack = script.getGod();
-            GameObject prefabToDefend = new GameObject();
+            //GameObject defendPrefab = new GameObject();
 
             if(godToAttack.health> 0)
             {
                 bool attack = godToAttack.attacking;
                 if(attack)
                 {
-                    prefabToDefend = GetClosestAliveEnemy(Team2Prefabs);
+                    foreach (GameObject prefab in Team2AttackOrderPrefabs)
+                    {
+                        SetGodOnPrefab defendScript = prefab.GetComponent<SetGodOnPrefab>();
+                        God defendGod = defendScript.getGod();
+                        if(defendGod.health > 0)
+                        {
+                            defendPrefab = prefab;
+                            break;
+                        }
+                    }
+                    
                 }
                 else
                 {
-                    prefabToDefend = GetClosestAliveEnemy(Team1Prefabs);
+                    foreach (GameObject prefab in Team1AttackOrderPrefabs)
+                    {
+                        SetGodOnPrefab defendScript = prefab.GetComponent<SetGodOnPrefab>();
+                        God defendGod = defendScript.getGod();
+                        if (defendGod.health > 0)
+                        {
+                            defendPrefab = prefab;
+                            break;
+                        }
+                    }
                 }
 
                 // Initiate attack for the god
-                StartCoroutine(Move(prefabToAttack, prefabToDefend));
+                StartCoroutine(Move());
 
                 // Move to the next prefab in the list
                 currentIndex = (currentIndex + 1) % totalPrefabs;
@@ -210,7 +248,7 @@ public class AttackManager : MonoBehaviour
         god.canAttack = true; // Reset canAttack flag after cooldown
     }
 
-    private IEnumerator Move(GameObject attackPrefab, GameObject defendPrefab)
+    private IEnumerator Move()
     {
         yield return null;
     }

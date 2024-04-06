@@ -236,11 +236,6 @@ public class AttackManager : MonoBehaviour
         }
     }
 
-    public GameObject GetClosestAliveEnemy(List<GameObject> list)
-    {
-        return new GameObject();
-    }
-
 
     private IEnumerator Cooldown(God god)
     {

@@ -83,7 +83,7 @@ public class LaborBattle : MonoBehaviour
         SetGodOnPrefab script2 = enemyPrefab.GetComponent<SetGodOnPrefab>();
         script2.setGod(enemyGod);
 
-        attackManager.StartBattle(gameController.ListEnemyLaborsPrefabs, gameController.ListLaborsPrefabs);
+        attackManager.StartBattle(gameController.ListLaborsPrefabs, gameController.ListEnemyLaborsPrefabs);
         //StartCoroutine(Battle());
     }
     

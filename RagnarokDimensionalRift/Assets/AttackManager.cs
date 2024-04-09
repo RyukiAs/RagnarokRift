@@ -193,7 +193,18 @@ public class AttackManager : MonoBehaviour
             GameObject defendPrefab;
             SetGodOnPrefab script = attackPrefab.GetComponent<SetGodOnPrefab>();
             God godToAttack = script.getGod();
-            //GameObject defendPrefab = new GameObject();
+
+            if(Team1AttackOrderPrefabs.Count() <= 0)
+            {
+                battleInProgress = false;
+                Debug.Log("Defeat");
+                yield return null;
+            }else if (Team2AttackOrderPrefabs.Count() <= 0)
+            {
+                battleInProgress = false;
+                Debug.Log("Victory");
+                yield return null;
+            }
 
             if(godToAttack.health> 0)
             {
@@ -250,7 +261,9 @@ public class AttackManager : MonoBehaviour
     {
         // Initial and target positions
         Vector3 initialPosition = attackPrefab.transform.position;
-        Vector3 targetPosition = defendPrefab.transform.position;
+        SetGodOnPrefab script = attackPrefab.GetComponent<SetGodOnPrefab>();
+        God defendGod = script.getGod();
+        Vector3 targetPosition = defendGod.position;
 
         // Duration of the movement
         float moveDuration = 0.2f;

@@ -43,8 +43,6 @@ public class LaborBattle : MonoBehaviour
             yield return null; // Wait for the next frame
         }
 
-        // Once the condensed god is set, proceed with displaying the god icons
-        //is.godPass = gameController.GetCondensedGod();
         showGods();
 
     }

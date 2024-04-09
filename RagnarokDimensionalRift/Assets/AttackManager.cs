@@ -88,6 +88,24 @@ public class AttackManager : MonoBehaviour
                 Team2AttackOrderPrefabs.Add(entry.Key);
             }
         }
+
+        Debug.Log("Holder:");
+        foreach (GameObject prefab in Holder)
+        {
+            Debug.Log(prefab.name);
+        }
+
+        Debug.Log("Team1AttackOrderPrefabs:");
+        foreach (GameObject prefab in Team1AttackOrderPrefabs)
+        {
+            Debug.Log(prefab.name);
+        }
+
+        Debug.Log("Team2AttackOrderPrefabs:");
+        foreach (GameObject prefab in Team2AttackOrderPrefabs)
+        {
+            Debug.Log(prefab.name);
+        }
     }
 
     public IEnumerator startFight()

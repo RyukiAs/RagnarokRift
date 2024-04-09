@@ -81,7 +81,23 @@ public class LaborBattle : MonoBehaviour
         SetGodOnPrefab script2 = enemyPrefab.GetComponent<SetGodOnPrefab>();
         script2.setGod(enemyGod);
 
-        attackManager.StartBattle(gameController.ListLaborsPrefabs, gameController.ListEnemyLaborsPrefabs);
+        List<GameObject> PlayerTeam = gameController.GetListLaborPrefabs();
+        List<GameObject> LaborTeam = gameController.GetListEnemyLaborPrefabs();
+
+        foreach(GameObject prefab in PlayerTeam)
+        {
+            SetGodOnPrefab script3 = prefab.GetComponent<SetGodOnPrefab>();
+            God prefabGod = script3.getGod();
+            Debug.Log($"Found {prefabGod.godName} in PlayerTeam");
+        }
+        foreach (GameObject prefab in LaborTeam)
+        {
+            SetGodOnPrefab script3 = prefab.GetComponent<SetGodOnPrefab>();
+            God prefabGod = script3.getGod();
+            Debug.Log($"Found {prefabGod.godName} in LaborTeam");
+        }
+
+        attackManager.StartBattle(PlayerTeam, LaborTeam);
         //StartCoroutine(Battle());
     }
     

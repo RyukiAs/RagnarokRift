@@ -34,21 +34,87 @@ public class AttackManager : MonoBehaviour
     public void StartBattle(List<GameObject> team1, List<GameObject> team2)
     {
         AttackOrderPrefabs.Clear();
+        Holder.Clear();
 
         Team1Prefabs = team1;
         Team2Prefabs = team2;
 
-        Holder = Team1Prefabs;
 
-        foreach (GameObject prefab in Team2Prefabs)
+        foreach (GameObject prefab in team1)
         {
             Holder.Add(prefab);
         }
-        SortPrefabsByXPosition();
+
+        foreach (GameObject prefab in team2)
+        {
+            Holder.Add(prefab);
+        }
+        /*
+        foreach (GameObject prefab in Holder)
+        {
+            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
+            God prefabGod = script.getGod();
+            Debug.Log($"Found {prefabGod.godName} in Holder in setting");
+        }
+        
+
+        foreach (GameObject prefab in Team1Prefabs)
+        {
+            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
+            God prefabGod = script.getGod();
+            Debug.Log($"Found {prefabGod.godName} in Team1Prefabs in setting");
+        }
+
+        foreach (GameObject prefab in Team2Prefabs)
+        {
+            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
+            God prefabGod = script.getGod();
+            Debug.Log($"Found {prefabGod.godName} in Team2Prefabs in setting");
+        }
+        */
+
+        SortPrefabsByPosition();
 
         StartCoroutine(startFight());
     }
 
+    private void SortPrefabsByPosition()
+    {
+        // Sort the prefabs based on their X positions
+        Team1AttackOrderPrefabs.Clear();
+        Team2AttackOrderPrefabs.Clear();
+
+        Team1AttackOrderPrefabs = Team1Prefabs;
+        Team2AttackOrderPrefabs = Team2Prefabs;
+
+        Holder.Sort((a, b) => Mathf.Abs(a.transform.position.x).CompareTo(Mathf.Abs(b.transform.position.x)));
+        Team1AttackOrderPrefabs.Sort((a, b) => Mathf.Abs(a.transform.position.x).CompareTo(Mathf.Abs(b.transform.position.x)));
+        Team2AttackOrderPrefabs.Sort((a, b) => Mathf.Abs(a.transform.position.x).CompareTo(Mathf.Abs(b.transform.position.x)));
+
+        foreach (GameObject prefab in Holder)
+        {
+            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
+            God prefabGod = script.getGod();
+            Debug.Log($"Found {prefabGod.godName} in Holder:");
+        }
+
+        foreach (GameObject prefab in Team1AttackOrderPrefabs)
+        {
+            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
+            God prefabGod = script.getGod();
+            Debug.Log($"Found {prefabGod.godName} in Team1AttackOrderPrefabs:");
+        }
+
+        foreach (GameObject prefab in Team2AttackOrderPrefabs)
+        {
+            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
+            God prefabGod = script.getGod();
+            Debug.Log($"Found {prefabGod.godName} in Team2AttackOrderPrefabs:");
+        }
+
+    }
+
+    /*
     private void SortPrefabsByXPosition()
     {
         // Clear previous data
@@ -89,24 +155,29 @@ public class AttackManager : MonoBehaviour
             }
         }
 
-        Debug.Log("Holder:");
+        
         foreach (GameObject prefab in Holder)
         {
-            Debug.Log(prefab.name);
+            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
+            God prefabGod = script.getGod();
+            Debug.Log($"Found {prefabGod.godName} in Holder:");
         }
 
-        Debug.Log("Team1AttackOrderPrefabs:");
         foreach (GameObject prefab in Team1AttackOrderPrefabs)
         {
-            Debug.Log(prefab.name);
+            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
+            God prefabGod = script.getGod();
+            Debug.Log($"Found {prefabGod.godName} in Team1AttackOrderPrefabs:");
         }
 
-        Debug.Log("Team2AttackOrderPrefabs:");
         foreach (GameObject prefab in Team2AttackOrderPrefabs)
         {
-            Debug.Log(prefab.name);
+            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
+            God prefabGod = script.getGod();
+            Debug.Log($"Found {prefabGod.godName} in Team2AttackOrderPrefabs:");
         }
     }
+    */
 
     public IEnumerator startFight()
     {

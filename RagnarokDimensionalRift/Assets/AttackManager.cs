@@ -135,12 +135,12 @@ public class AttackManager : MonoBehaviour
             {
                 battleInProgress = false;
                 Debug.Log("Defeat");
-                yield return null;
+                yield break;
             }else if (Team2AttackOrderPrefabs.Count() <= 0)
             {
                 battleInProgress = false;
                 Debug.Log("Victory");
-                yield return null;
+                yield break;
             }
 
             if(godToAttack.health> 0)
@@ -148,36 +148,40 @@ public class AttackManager : MonoBehaviour
                 bool attack = godToAttack.attacking;
                 if(attack)
                 {
-                    /*
-                    foreach (GameObject prefab in Team2AttackOrderPrefabs)
+                    if(Team2AttackOrderPrefabs[0] != null)
                     {
-                        SetGodOnPrefab defendScript = prefab.GetComponent<SetGodOnPrefab>();
-                        God defendGod = defendScript.getGod();
-                        if(defendGod.health > 0)
-                        {
-                            defendPrefab = prefab;
-                            break;
-                        }
+                        defendPrefab = Team2AttackOrderPrefabs[0];
+                    }else if(Team2AttackOrderPrefabs.Count() <= 0)
+                    {
+                        defendPrefab= null;
+                        battleInProgress = false;
+                        Debug.Log("Victory");
+                        yield break;
                     }
-                    */
-                    defendPrefab = Team2AttackOrderPrefabs[0];
-
+                    else
+                    {
+                        defendPrefab = null;
+                        yield break;
+                    }
                 }
                 else
                 {
-                    /*
-                    foreach (GameObject prefab in Team1AttackOrderPrefabs)
+                    if (Team1AttackOrderPrefabs[0] != null)
                     {
-                        SetGodOnPrefab defendScript = prefab.GetComponent<SetGodOnPrefab>();
-                        God defendGod = defendScript.getGod();
-                        if (defendGod.health > 0)
-                        {
-                            defendPrefab = prefab;
-                            break;
-                        }
+                        defendPrefab = Team1AttackOrderPrefabs[0];
                     }
-                    */
-                    defendPrefab = Team1AttackOrderPrefabs[0];
+                    else if (Team1AttackOrderPrefabs.Count() <= 0)
+                    {
+                        defendPrefab = null;
+                        battleInProgress = false;
+                        Debug.Log("Defeat");
+                        yield break;
+                    }
+                    else
+                    {
+                        defendPrefab = null;
+                        yield break;
+                    }
                 }
 
                 // Initiate attack for the god
@@ -188,7 +192,6 @@ public class AttackManager : MonoBehaviour
 
                 // Wait for offset duration before next attack
                 yield return new WaitForSeconds(offsetDuration);
-                yield return null;
             }
             
         }
@@ -198,7 +201,7 @@ public class AttackManager : MonoBehaviour
     {
         // Initial and target positions
         Vector3 initialPosition = attackPrefab.transform.position;
-        SetGodOnPrefab script = attackPrefab.GetComponent<SetGodOnPrefab>();
+        SetGodOnPrefab script = defendPrefab.GetComponent<SetGodOnPrefab>();
         God defendGod = script.getGod();
         Vector3 targetPosition = defendGod.position;
 

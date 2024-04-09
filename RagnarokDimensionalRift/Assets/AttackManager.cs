@@ -10,7 +10,7 @@ public class AttackManager : MonoBehaviour
     private GameController gameController;
 
     private float cooldownDuration = 1f; // Cooldown duration in seconds
-    private float offsetDuration = 0.2f; // Offset duration between attacks in seconds
+    private float offsetDuration = 3f; // Offset duration between attacks in seconds
     private List<GameObject> Team1Prefabs = new List<GameObject>();
     private List<GameObject> Team2Prefabs = new List<GameObject>();
     private List<GameObject> Holder = new List<GameObject>();
@@ -114,71 +114,6 @@ public class AttackManager : MonoBehaviour
 
     }
 
-    /*
-    private void SortPrefabsByXPosition()
-    {
-        // Clear previous data
-        Team1AttackOrderPrefabs.Clear();
-        Team2AttackOrderPrefabs.Clear();
-        Holder.Clear();
-
-        // Dictionary to store prefab and its distance from X position 0
-        Dictionary<GameObject, float> prefabDistanceMap = new Dictionary<GameObject, float>();
-
-        // Calculate the distance of each prefab's X position from 0 and store in the dictionary
-        foreach (GameObject prefab in Team1Prefabs)
-        {
-            float distance = Mathf.Abs(prefab.transform.position.x);
-            prefabDistanceMap.Add(prefab, distance);
-        }
-
-        foreach (GameObject prefab in Team2Prefabs)
-        {
-            float distance = Mathf.Abs(prefab.transform.position.x);
-            prefabDistanceMap.Add(prefab, distance);
-        }
-
-        // Sort the dictionary by distance
-        var sortedDict = prefabDistanceMap.OrderBy(x => x.Value);
-
-        // Add the sorted prefabs to the global variables
-        foreach (var entry in sortedDict)
-        {
-            Holder.Add(entry.Key);
-            if (Team1Prefabs.Contains(entry.Key))
-            {
-                Team1AttackOrderPrefabs.Add(entry.Key);
-            }
-            else if (Team2Prefabs.Contains(entry.Key))
-            {
-                Team2AttackOrderPrefabs.Add(entry.Key);
-            }
-        }
-
-        
-        foreach (GameObject prefab in Holder)
-        {
-            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
-            God prefabGod = script.getGod();
-            Debug.Log($"Found {prefabGod.godName} in Holder:");
-        }
-
-        foreach (GameObject prefab in Team1AttackOrderPrefabs)
-        {
-            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
-            God prefabGod = script.getGod();
-            Debug.Log($"Found {prefabGod.godName} in Team1AttackOrderPrefabs:");
-        }
-
-        foreach (GameObject prefab in Team2AttackOrderPrefabs)
-        {
-            SetGodOnPrefab script = prefab.GetComponent<SetGodOnPrefab>();
-            God prefabGod = script.getGod();
-            Debug.Log($"Found {prefabGod.godName} in Team2AttackOrderPrefabs:");
-        }
-    }
-    */
-
     public IEnumerator startFight()
     {
         bool battleInProgress = true;
@@ -194,7 +129,9 @@ public class AttackManager : MonoBehaviour
             SetGodOnPrefab script = attackPrefab.GetComponent<SetGodOnPrefab>();
             God godToAttack = script.getGod();
 
-            if(Team1AttackOrderPrefabs.Count() <= 0)
+            Debug.Log("Team1AttackOrderPrefabs count: " + Team1AttackOrderPrefabs.Count());
+            Debug.Log("Team2AttackOrderPrefabs count: " + Team2AttackOrderPrefabs.Count());
+            if (Team1AttackOrderPrefabs.Count() <= 0)
             {
                 battleInProgress = false;
                 Debug.Log("Defeat");
@@ -245,7 +182,7 @@ public class AttackManager : MonoBehaviour
 
                 // Initiate attack for the god
                 StartCoroutine(Move(attackPrefab, defendPrefab));
-
+                
                 // Move to the next prefab in the list
                 currentIndex = (currentIndex + 1) % totalPrefabs;
 

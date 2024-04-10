@@ -228,12 +228,17 @@ public class AttackManager : MonoBehaviour
         while (elapsedTime < moveDuration)
         {
             attackPrefab.transform.position = Vector3.Lerp(initialPosition, targetPosition, elapsedTime / moveDuration);
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime; // DEBUG: Math is causing sprites to go off screen
             yield return null; // Wait for the next frame
         }
 
+        Debug.Log($"Before setting target pos: {attackPrefab.transform.position}");
+
         // Ensure the attackPrefab reaches the target position
         attackPrefab.transform.position = targetPosition;
+
+        Debug.Log($"After setting target pos: {attackPrefab.transform.position}");
+
 
         Attack(attackPrefab, defendPrefab);
 

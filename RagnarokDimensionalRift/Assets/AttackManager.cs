@@ -203,7 +203,17 @@ public class AttackManager : MonoBehaviour
         Vector3 initialPosition = attackPrefab.transform.position;
         SetGodOnPrefab script = defendPrefab.GetComponent<SetGodOnPrefab>();
         God defendGod = script.getGod();
-        Vector3 targetPosition = defendGod.position;
+        Vector3 offset;
+        if (defendGod.attacking)
+        {
+            offset = new Vector3(-30f, 0f, 0f);
+        }
+        else
+        {
+            offset = new Vector3(30f, 0f, 0f);
+        }
+        Vector3 convertDefendPositon = defendGod.position;
+        Vector3 targetPosition = convertDefendPositon + offset;
 
         // Duration of the movement
         float moveDuration = 0.2f;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+// using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -214,6 +215,8 @@ public class AttackManager : MonoBehaviour
         }
         Vector3 convertDefendPositon = defendGod.position;
         Vector3 targetPosition = convertDefendPositon + offset;
+        Debug.Log($"targetPositon {targetPosition}");
+        
 
         // Duration of the movement
         float moveDuration = 0.2f;
@@ -273,6 +276,9 @@ public class AttackManager : MonoBehaviour
 
     private IEnumerator MoveBack(GameObject attackPrefab)
     {
+        Debug.Log("Moving back now!");
+        
+
         // Initial and target positions
         Vector3 initialPosition = attackPrefab.transform.position;
 
@@ -280,6 +286,8 @@ public class AttackManager : MonoBehaviour
         God attackingGod = attackingGodScript.getGod();
 
         Vector3 targetPosition = attackingGod.position;
+
+        Debug.Log($"targetPosition moving back to {targetPosition}");
 
         // Duration of the movement
         float moveDuration = 0.2f;

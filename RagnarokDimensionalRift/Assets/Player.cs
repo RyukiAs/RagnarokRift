@@ -32,7 +32,8 @@ public class Player : MonoBehaviour
                     "a scaly body, and bat-like wings. It is part of a pantheon of cosmic deities known as " +
                     "the Great Old Ones.";
                 // Create a new god with a specified icon
-                God newGod = new God("Cthulhu", 1, godIcon, description, sprite);
+                bool attacking = true;
+                God newGod = new God("Cthulhu", 1, godIcon, description, sprite, attacking);
                 gameController.allSummonedGods.Add(newGod);
 
             }
@@ -45,7 +46,8 @@ public class Player : MonoBehaviour
                     "as his symbol of authority. One of the big three of the Greek Gods. The god of lighting in " +
                     "Greek mythology, also seen as the most important Greek God.";
                 // Create a new god with a specified icon
-                God newGod = new God("Zeus", 1, godIcon, description, sprite);
+                bool attacking = true;
+                God newGod = new God("Zeus", 1, godIcon, description, sprite,attacking);
                 gameController.allSummonedGods.Add(newGod);
 
             }
@@ -57,7 +59,8 @@ public class Player : MonoBehaviour
                 string description = "Dionysus - known as the god of wine, festivities, and theater. One of the " +
                     "Twelve Greek Olympians.";
                 // Create a new god with a specified icon
-                God newGod = new God("Dionysus", 1, godIcon, description, sprite);
+                bool attacking = true;
+                God newGod = new God("Dionysus", 1, godIcon, description, sprite, attacking);
                 gameController.allSummonedGods.Add(newGod);
 
             }
@@ -70,7 +73,8 @@ public class Player : MonoBehaviour
                     "He is one of the twelve Olympian deities and holds a position of great importance among the Roman " +
                     "gods. Neptune is often depicted as a powerful and bearded deity, holding a trident";
                 // Create a new god with a specified icon
-                God newGod = new God("Neptune", 1, godIcon, description, sprite);
+                bool attacking = true;
+                God newGod = new God("Neptune", 1, godIcon, description, sprite, attacking);
                 gameController.allSummonedGods.Add(newGod);
 
             }
@@ -82,7 +86,8 @@ public class Player : MonoBehaviour
                 string description = "Shiva - Hindu god of destruction. One of the most important Hindu Gods. " +
                     "Described as having 3 eyes, multiple hands holding a trident and skull.";
                 // Create a new god with a specified icon
-                God newGod = new God("Shiva", 1, godIcon, description, sprite);
+                bool attacking = true;
+                God newGod = new God("Shiva", 1, godIcon, description, sprite, attacking);
                 gameController.allSummonedGods.Add(newGod);
 
             }
@@ -96,7 +101,8 @@ public class Player : MonoBehaviour
                     "in a hut that stands on chicken legs and surrounded by a fence made of human bones. Prominent " +
                     "figure in Slavic folklore.";
                 // Create a new god with a specified icon
-                God newGod = new God("Baba Yaga", 1, godIcon, description, sprite);
+                bool attacking = true;
+                God newGod = new God("Baba Yaga", 1, godIcon, description, sprite, attacking);
                 gameController.allSummonedGods.Add(newGod);
 
             }
@@ -109,7 +115,8 @@ public class Player : MonoBehaviour
                     "He is a member of the Aesir, the principal group of gods in the Norse pantheon, and is often " +
                     "depicted as a mighty and red-bearded warrior wielding the powerful hammer, Mjolnir.";
                 // Create a new god with a specified icon
-                God newGod = new God("Thor", 1, godIcon, description, sprite);
+                bool attacking = true;
+                God newGod = new God("Thor", 1, godIcon, description, sprite, attacking);
                 gameController.allSummonedGods.Add(newGod);
 
             }
@@ -122,7 +129,8 @@ public class Player : MonoBehaviour
                     "revered as the goddess of the sun and considered one of the most important and benevolent " +
                     "figures in the Shinto pantheon.";
                 // Create a new god with a specified icon
-                God newGod = new God("Amaterasu", 1, godIcon, description, sprite);
+                bool attacking = true;
+                God newGod = new God("Amaterasu", 1, godIcon, description, sprite, attacking);
                 gameController.allSummonedGods.Add(newGod);
 
             }
@@ -136,7 +144,8 @@ public class Player : MonoBehaviour
                     "historical roots in the worship of a Philistine god named Baal-Zebub, which means " +
                     "\"Lord of the Flies.\"";
                 // Create a new god with a specified icon
-                God newGod = new God("Beelzebub", 1, godIcon, description, sprite);
+                bool attacking = true;
+                God newGod = new God("Beelzebub", 1, godIcon, description, sprite, attacking);
                 gameController.allSummonedGods.Add(newGod);
 
             }
@@ -149,7 +158,8 @@ public class Player : MonoBehaviour
                     "most powerful and fearsome beings. Described as a colossal, hundred-headed monster with fiery " +
                     "eyes and an immense wingspan.";
                 // Create a new god with a specified icon
-                God newGod = new God("Typhon", 1, godIcon, description, sprite);
+                bool attacking = true;
+                God newGod = new God("Typhon", 1, godIcon, description, sprite,attacking);
                 gameController.allSummonedGods.Add(newGod);
 
             }
@@ -162,7 +172,8 @@ public class Player : MonoBehaviour
                     "amorphous. It may take on various forms, allowing it to embody the fears and imagination of " +
                     "different cultures.";
                 // Create a new god with a specified icon
-                God newGod = new God("Boogeyman", 1, godIcon, description, sprite);
+                bool attacking = true;
+                God newGod = new God("Boogeyman", 1, godIcon, description, sprite,attacking);
                 gameController.allSummonedGods.Add(newGod);
             }
         }

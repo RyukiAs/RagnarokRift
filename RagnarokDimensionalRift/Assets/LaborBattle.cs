@@ -43,8 +43,6 @@ public class LaborBattle : MonoBehaviour
             yield return null; // Wait for the next frame
         }
 
-        // Once the condensed god is set, proceed with displaying the god icons
-        //is.godPass = gameController.GetCondensedGod();
         showGods();
 
     }
@@ -83,7 +81,23 @@ public class LaborBattle : MonoBehaviour
         SetGodOnPrefab script2 = enemyPrefab.GetComponent<SetGodOnPrefab>();
         script2.setGod(enemyGod);
 
-        attackManager.StartBattle(gameController.ListEnemyLaborsPrefabs, gameController.ListLaborsPrefabs);
+        List<GameObject> PlayerTeam = gameController.GetListLaborPrefabs();
+        List<GameObject> LaborTeam = gameController.GetListEnemyLaborPrefabs();
+
+        foreach(GameObject prefab in PlayerTeam)
+        {
+            SetGodOnPrefab script3 = prefab.GetComponent<SetGodOnPrefab>();
+            God prefabGod = script3.getGod();
+            Debug.Log($"Found {prefabGod.godName} in PlayerTeam");
+        }
+        foreach (GameObject prefab in LaborTeam)
+        {
+            SetGodOnPrefab script3 = prefab.GetComponent<SetGodOnPrefab>();
+            God prefabGod = script3.getGod();
+            Debug.Log($"Found {prefabGod.godName} in LaborTeam");
+        }
+
+        attackManager.StartBattle(PlayerTeam, LaborTeam);
         //StartCoroutine(Battle());
     }
     

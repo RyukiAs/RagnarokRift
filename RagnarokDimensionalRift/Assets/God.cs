@@ -22,7 +22,7 @@ public class God
     public bool canAttack;
     public bool attacking;
 
-    public God(string godName, int grade, Sprite icon, string description, Sprite sprite, bool attacking=true)
+    public God(string godName, int grade, Sprite icon, string description, Sprite sprite, bool attacking)
     {
         this.godName = godName;
         this.grade = grade;
@@ -38,6 +38,7 @@ public class God
         this.sprite = sprite;
         this.position = new Vector2(0f,0f);
         this.canAttack = true;
+        this.attacking = attacking;
     }
 
     public void CalculateUpgradedStats(int level)

@@ -23688,6 +23688,8 @@ GameObject:
   - component: {fileID: 1067751570}
   - component: {fileID: 1067751569}
   - component: {fileID: 1067751572}
+  - component: {fileID: 1067751574}
+  - component: {fileID: 1067751573}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -23807,6 +23809,32 @@ MonoBehaviour:
     position: {x: 0, y: 0}
     canAttack: 0
     attacking: 0
+--- !u!114 &1067751573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067751567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab46e2b99b43d64090f2326fe420ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1067751574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067751567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84a7b253d43d2045be5a29d4d5c540b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  godIconPrefab: {fileID: 9145874131619320711, guid: f0aa64363f48baa46bfdc0c303ab16c4, type: 3}
+  iconsParent: {fileID: 1067751568}
 --- !u!1 &1071343291
 GameObject:
   m_ObjectHideFlags: 0
@@ -45675,7 +45703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1939750442
 RectTransform:
   m_ObjectHideFlags: 0

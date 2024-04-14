@@ -10,6 +10,8 @@ public class AttackManager : MonoBehaviour
 {
     private GameController gameController;
 
+    private Canvas canvas;
+
     private float cooldownDuration = 1f; // Cooldown duration in seconds
     private float offsetDuration = 3f; // Offset duration between attacks in seconds
     private List<GameObject> Team1Prefabs = new List<GameObject>();
@@ -17,9 +19,9 @@ public class AttackManager : MonoBehaviour
     private List<GameObject> Holder = new List<GameObject>();
 
     private List<GameObject> AttackOrderPrefabs = new List<GameObject>();
-    private List<GameObject> Team1AttackOrderPrefabs= new List<GameObject>();
+    private List<GameObject> Team1AttackOrderPrefabs = new List<GameObject>();
     private List<GameObject> Team2AttackOrderPrefabs = new List<GameObject>();
-    
+
 
     private void Start()
     {
@@ -32,8 +34,9 @@ public class AttackManager : MonoBehaviour
 
     }
 
-    public void StartBattle(List<GameObject> team1, List<GameObject> team2)
+    public void StartBattle(List<GameObject> team1, List<GameObject> team2, Canvas canvasUse)
     {
+        canvas = canvasUse;
         AttackOrderPrefabs.Clear();
         Holder.Clear();
 
@@ -137,24 +140,26 @@ public class AttackManager : MonoBehaviour
                 battleInProgress = false;
                 Debug.Log("Defeat");
                 yield break;
-            }else if (Team2AttackOrderPrefabs.Count() <= 0)
+            }
+            else if (Team2AttackOrderPrefabs.Count() <= 0)
             {
                 battleInProgress = false;
                 Debug.Log("Victory");
                 yield break;
             }
 
-            if(godToAttack.health> 0)
+            if (godToAttack.health > 0)
             {
                 bool attack = godToAttack.attacking;
-                if(attack)
+                if (attack)
                 {
-                    if(Team2AttackOrderPrefabs[0] != null)
+                    if (Team2AttackOrderPrefabs[0] != null)
                     {
                         defendPrefab = Team2AttackOrderPrefabs[0];
-                    }else if(Team2AttackOrderPrefabs.Count() <= 0)
+                    }
+                    else if (Team2AttackOrderPrefabs.Count() <= 0)
                     {
-                        defendPrefab= null;
+                        defendPrefab = null;
                         battleInProgress = false;
                         Debug.Log("Victory");
                         yield break;
@@ -187,14 +192,14 @@ public class AttackManager : MonoBehaviour
 
                 // Initiate attack for the god
                 StartCoroutine(Move(attackPrefab, defendPrefab));
-                
+
                 // Move to the next prefab in the list
                 currentIndex = (currentIndex + 1) % totalPrefabs;
 
                 // Wait for offset duration before next attack
                 yield return new WaitForSeconds(offsetDuration);
             }
-            
+
         }
     }
 
@@ -204,32 +209,34 @@ public class AttackManager : MonoBehaviour
         Vector3 initialPosition = attackPrefab.transform.position;
         SetGodOnPrefab script = defendPrefab.GetComponent<SetGodOnPrefab>();
         God defendGod = script.getGod();
-        Vector3 offset;
-        if (defendGod.attacking)
-        {
-            offset = new Vector3(-30f, 0f, 0f);
-        }
-        else
-        {
-            offset = new Vector3(30f, 0f, 0f);
-        }
-        Vector3 convertDefendPositon = new Vector3(defendGod.position.x, defendGod.position.y, 0f); ;
-        Vector3 targetPosition = convertDefendPositon + offset;
-        Debug.Log($"targetPositon {targetPosition}");
-        
+        Vector3 offset = defendGod.attacking ? new Vector3(30f, 0f, 0f) : new Vector3(-30f, 0f, 0f);
+
+        Vector3 canvasScale = canvas.transform.localScale; // Get canvas scale
+        Vector3 canvasCenter = canvas.transform.position;
+
+        Vector3 targetPosition = new Vector3(canvasCenter.x + (canvasScale.x * offset.x) + (canvasScale.x * defendGod.position.x),
+                                         canvasCenter.y + (canvasScale.y * offset.y) + (canvasScale.y * defendGod.position.y),
+                                         0f);
 
         // Duration of the movement
         float moveDuration = 1f;
-
         // Elapsed time
         float elapsedTime = 0f;
 
         // Move the attackPrefab towards the defendPrefab's position
         while (elapsedTime < moveDuration)
         {
-            attackPrefab.transform.position = Vector3.Lerp(attackPrefab.transform.position, targetPosition, elapsedTime / moveDuration);
+            // Calculate the next position towards the target
+            Vector3 newPosition = Vector3.Lerp(initialPosition, targetPosition, (elapsedTime / moveDuration));
+
+            // Set the position of the attackPrefab
+            attackPrefab.transform.position = newPosition;
+
             Debug.Log($"small move to {attackPrefab.transform.position}");
+
             elapsedTime += Time.deltaTime; // DEBUG: Math is causing sprites to go off screen
+
+            Debug.Log($"elapsedTime = {elapsedTime}");
             yield return null; // Wait for the next frame
         }
 
@@ -241,6 +248,11 @@ public class AttackManager : MonoBehaviour
         Debug.Log($"After setting target pos: {attackPrefab.transform.position}");
 
 
+        //Debug.Log("Resetting position");
+        //SetGodOnPrefab ascript = attackPrefab.GetComponent<SetGodOnPrefab>();
+        //God aGod = ascript.getGod();
+        //attackPrefab.transform.position = new Vector3(canvasCenter.x + (canvasScale.x * aGod.position.x), 
+        //                                              canvasCenter.y + (canvasScale.y * aGod.position.y), 0f);
         Attack(attackPrefab, defendPrefab);
 
     }
@@ -261,7 +273,7 @@ public class AttackManager : MonoBehaviour
             if (defendingGod.health < 0)
             {
                 //Holder.Remove(defendPrefab);
-                if(defendingGod.attacking)
+                if (defendingGod.attacking)
                 {
                     Team1AttackOrderPrefabs.Remove(defendPrefab);
                 }
@@ -276,14 +288,44 @@ public class AttackManager : MonoBehaviour
         {
             Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName}, but no damage is dealt.");
         }
-
+        StartCoroutine(AttackVisual(defendPrefab));
         StartCoroutine(MoveBack(attackPrefab));
+    }
+
+    private IEnumerator AttackVisual(GameObject defender)
+    {
+        Debug.Log("Inside AttackVisual");
+
+        // Attempt to find the Image component on the defender object
+        Image sprite = defender.GetComponentInChildren<Image>();
+
+        // Check if the Image component is found
+        if (sprite != null)
+        {
+
+            // Store the original color of the defending prefab
+            Color originalColor = sprite.color;
+
+            // Change the color of the defending prefab to red temporarily
+            sprite.color = Color.red;
+
+            //// Wait for a short delay after the attack
+            yield return new WaitForSeconds(0.5f);
+
+            // Restore the original color of the defending prefab
+            sprite.color = originalColor;
+        }
+        else
+        {
+            Debug.Log("cannot find sprite");
+        }
+
     }
 
     private IEnumerator MoveBack(GameObject attackPrefab)
     {
         Debug.Log("Moving back now!");
-        
+
 
         // Initial and target positions
         Vector3 initialPosition = attackPrefab.transform.position;
@@ -291,12 +333,17 @@ public class AttackManager : MonoBehaviour
         SetGodOnPrefab attackingGodScript = attackPrefab.GetComponent<SetGodOnPrefab>();
         God attackingGod = attackingGodScript.getGod();
 
-        Vector3 targetPosition = new Vector3(attackingGod.position.x, attackingGod.position.y, 0f); ;
+        Vector3 canvasScale = canvas.transform.localScale; // Get canvas scale
+        Vector3 canvasCenter = canvas.transform.position;
+
+        Vector3 targetPosition = new Vector3(canvasCenter.x + (canvasScale.x * attackingGod.position.x),
+                                         canvasCenter.y + (canvasScale.y * attackingGod.position.y),
+                                         0f);
 
         Debug.Log($"targetPosition moving back to {targetPosition}");
 
         // Duration of the movement
-        float moveDuration = 0.2f;
+        float moveDuration = 1f;
 
         // Elapsed time
         float elapsedTime = 0f;
@@ -304,9 +351,16 @@ public class AttackManager : MonoBehaviour
         // Move the attackPrefab towards the defendPrefab's position
         while (elapsedTime < moveDuration)
         {
-            attackPrefab.transform.position = Vector3.Lerp(attackPrefab.transform.position, targetPosition, elapsedTime / moveDuration);
+            // Calculate the next position towards the target
+            Vector3 newPosition = Vector3.Lerp(initialPosition, targetPosition, (elapsedTime / moveDuration));
+
+            // Set the position of the attackPrefab
+            attackPrefab.transform.position = newPosition;
+
             Debug.Log($"small move back to {attackPrefab.transform.position}");
+
             elapsedTime += Time.deltaTime;
+            Debug.Log($"elapsedTime: Move Back {elapsedTime}");
             yield return null; // Wait for the next frame
         }
 
@@ -315,7 +369,7 @@ public class AttackManager : MonoBehaviour
 
     }
 
-   
+
     private IEnumerator Cooldown(God god)
     {
         yield return new WaitForSeconds(cooldownDuration);

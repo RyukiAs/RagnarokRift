@@ -96,8 +96,8 @@ public class LaborBattle : MonoBehaviour
             God prefabGod = script3.getGod();
             Debug.Log($"Found {prefabGod.godName} in LaborTeam");
         }
-
-        attackManager.StartBattle(PlayerTeam, LaborTeam);
+        Canvas canvas = this.GetComponentInParent<Canvas>();
+        attackManager.StartBattle(PlayerTeam, LaborTeam, canvas);
         //StartCoroutine(Battle());
     }
     

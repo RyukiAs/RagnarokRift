@@ -213,13 +213,13 @@ public class AttackManager : MonoBehaviour
         {
             offset = new Vector3(30f, 0f, 0f);
         }
-        Vector3 convertDefendPositon = defendGod.position;
+        Vector3 convertDefendPositon = new Vector3(defendGod.position.x, defendGod.position.y, 0f); ;
         Vector3 targetPosition = convertDefendPositon + offset;
         Debug.Log($"targetPositon {targetPosition}");
         
 
         // Duration of the movement
-        float moveDuration = 0.2f;
+        float moveDuration = 1f;
 
         // Elapsed time
         float elapsedTime = 0f;
@@ -227,7 +227,8 @@ public class AttackManager : MonoBehaviour
         // Move the attackPrefab towards the defendPrefab's position
         while (elapsedTime < moveDuration)
         {
-            attackPrefab.transform.position = Vector3.Lerp(initialPosition, targetPosition, elapsedTime / moveDuration);
+            attackPrefab.transform.position = Vector3.Lerp(attackPrefab.transform.position, targetPosition, elapsedTime / moveDuration);
+            Debug.Log($"small move to {attackPrefab.transform.position}");
             elapsedTime += Time.deltaTime; // DEBUG: Math is causing sprites to go off screen
             yield return null; // Wait for the next frame
         }
@@ -290,7 +291,7 @@ public class AttackManager : MonoBehaviour
         SetGodOnPrefab attackingGodScript = attackPrefab.GetComponent<SetGodOnPrefab>();
         God attackingGod = attackingGodScript.getGod();
 
-        Vector3 targetPosition = attackingGod.position;
+        Vector3 targetPosition = new Vector3(attackingGod.position.x, attackingGod.position.y, 0f); ;
 
         Debug.Log($"targetPosition moving back to {targetPosition}");
 
@@ -303,7 +304,8 @@ public class AttackManager : MonoBehaviour
         // Move the attackPrefab towards the defendPrefab's position
         while (elapsedTime < moveDuration)
         {
-            attackPrefab.transform.position = Vector3.Lerp(initialPosition, targetPosition, elapsedTime / moveDuration);
+            attackPrefab.transform.position = Vector3.Lerp(attackPrefab.transform.position, targetPosition, elapsedTime / moveDuration);
+            Debug.Log($"small move back to {attackPrefab.transform.position}");
             elapsedTime += Time.deltaTime;
             yield return null; // Wait for the next frame
         }

@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Ragnarok.unity
+    path: Assets/Assets/Scenes/Ragnarok.unity
     guid: a58ccded5b29547ba867edd35f4e10fd
   m_configObjects: {}

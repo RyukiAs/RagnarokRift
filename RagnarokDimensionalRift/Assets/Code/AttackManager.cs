@@ -13,7 +13,7 @@ public class AttackManager : MonoBehaviour
     private Canvas canvas;
 
     private float cooldownDuration = 1f; // Cooldown duration in seconds
-    private float offsetDuration = 3f; // Offset duration between attacks in seconds
+    private float offsetDuration = 1.5f; // Offset duration between attacks in seconds
     private List<GameObject> Team1Prefabs = new List<GameObject>();
     private List<GameObject> Team2Prefabs = new List<GameObject>();
     private List<GameObject> Holder = new List<GameObject>();
@@ -219,7 +219,7 @@ public class AttackManager : MonoBehaviour
                                          0f);
 
         // Duration of the movement
-        float moveDuration = 1f;
+        float moveDuration = 0.5f;
         // Elapsed time
         float elapsedTime = 0f;
 
@@ -232,20 +232,20 @@ public class AttackManager : MonoBehaviour
             // Set the position of the attackPrefab
             attackPrefab.transform.position = newPosition;
 
-            Debug.Log($"small move to {attackPrefab.transform.position}");
+            //Debug.Log($"small move to {attackPrefab.transform.position}");
 
             elapsedTime += Time.deltaTime; // DEBUG: Math is causing sprites to go off screen
 
-            Debug.Log($"elapsedTime = {elapsedTime}");
+            //Debug.Log($"elapsedTime = {elapsedTime}");
             yield return null; // Wait for the next frame
         }
 
-        Debug.Log($"Before setting target pos: {attackPrefab.transform.position}");
+        //Debug.Log($"Before setting target pos: {attackPrefab.transform.position}");
 
         // Ensure the attackPrefab reaches the target position
         attackPrefab.transform.position = targetPosition;
 
-        Debug.Log($"After setting target pos: {attackPrefab.transform.position}");
+        //Debug.Log($"After setting target pos: {attackPrefab.transform.position}");
 
 
         //Debug.Log("Resetting position");
@@ -324,7 +324,7 @@ public class AttackManager : MonoBehaviour
 
     private IEnumerator MoveBack(GameObject attackPrefab)
     {
-        Debug.Log("Moving back now!");
+        //Debug.Log("Moving back now!");
 
 
         // Initial and target positions
@@ -340,10 +340,10 @@ public class AttackManager : MonoBehaviour
                                          canvasCenter.y + (canvasScale.y * attackingGod.position.y),
                                          0f);
 
-        Debug.Log($"targetPosition moving back to {targetPosition}");
+        //Debug.Log($"targetPosition moving back to {targetPosition}");
 
         // Duration of the movement
-        float moveDuration = 1f;
+        float moveDuration = 0.5f;
 
         // Elapsed time
         float elapsedTime = 0f;
@@ -357,10 +357,10 @@ public class AttackManager : MonoBehaviour
             // Set the position of the attackPrefab
             attackPrefab.transform.position = newPosition;
 
-            Debug.Log($"small move back to {attackPrefab.transform.position}");
+            //Debug.Log($"small move back to {attackPrefab.transform.position}");
 
             elapsedTime += Time.deltaTime;
-            Debug.Log($"elapsedTime: Move Back {elapsedTime}");
+            //Debug.Log($"elapsedTime: Move Back {elapsedTime}");
             yield return null; // Wait for the next frame
         }
 

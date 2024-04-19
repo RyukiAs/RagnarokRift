@@ -22,17 +22,17 @@ public class God
     public bool canAttack;
     public bool attacking;
 
-    public God(string godName, int grade, Sprite icon, string description, Sprite sprite, bool attacking)
+    public God(string godName, int grade, Sprite icon, string description, Sprite sprite, bool attacking, int baseHealth, int baseAttack, int baseDefense)
     {
         this.godName = godName;
         this.grade = grade;
         this.icon = icon;
         this.level = 1;
-        this.baseHealth = 1000;
+        this.baseHealth = baseHealth;
         this.health = this.baseHealth;
-        this.baseAttack = 130;
+        this.baseAttack = baseAttack;
         this.attack = this.baseAttack;
-        this.baseDefense = 30;
+        this.baseDefense = baseDefense;
         this.defense = this.baseDefense;
         this.description = description;
         this.sprite = sprite;

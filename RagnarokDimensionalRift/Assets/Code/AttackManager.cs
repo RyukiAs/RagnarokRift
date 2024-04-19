@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 // using System.Diagnostics;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.WSA;
@@ -288,16 +289,18 @@ public class AttackManager : MonoBehaviour
         {
             Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName}, but no damage is dealt.");
         }
-        StartCoroutine(AttackVisual(defendPrefab));
+        StartCoroutine(AttackVisual(defendPrefab, damage));
         StartCoroutine(MoveBack(attackPrefab));
     }
 
-    private IEnumerator AttackVisual(GameObject defender)
+    private IEnumerator AttackVisual(GameObject defender, int damage)
     {
         Debug.Log("Inside AttackVisual");
 
         // Attempt to find the Image component on the defender object
         Image sprite = defender.GetComponentInChildren<Image>();
+
+        TextMeshProUGUI text = defender.GetComponentInChildren<TextMeshProUGUI>();
 
         // Check if the Image component is found
         if (sprite != null)
@@ -309,11 +312,14 @@ public class AttackManager : MonoBehaviour
             // Change the color of the defending prefab to red temporarily
             sprite.color = Color.red;
 
+            text.text = damage.ToString();
+
             //// Wait for a short delay after the attack
             yield return new WaitForSeconds(0.5f);
 
             // Restore the original color of the defending prefab
             sprite.color = originalColor;
+            text.text = "";
         }
         else
         {

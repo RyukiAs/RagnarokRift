@@ -271,7 +271,7 @@ public class AttackManager : MonoBehaviour
         {
             defendingGod.health -= damage;
             Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName} for {damage} damage.");
-            if (defendingGod.health < 0)
+            if (defendingGod.health <= 0)
             {
                 //Holder.Remove(defendPrefab);
                 if (defendingGod.attacking)
@@ -303,15 +303,6 @@ public class AttackManager : MonoBehaviour
         TextMeshProUGUI text = defender.GetComponentInChildren<TextMeshProUGUI>();
 
         Transform hpBarTransform = defender.transform.Find("hpbackground/hpbar");
-
-        //Transform defenderTrans = defender.transform;
-        //Transform background = defenderTrans.Find("hpbackground");
-        //Transform getHpTrans = background.Find("hpbar");
-        //Image hpBar = getHpTrans.GetComponent<Image>();
-
-        //SetGodOnPrefab defendingGodScript = defender.GetComponent<SetGodOnPrefab>();
-        //God defendingGod = defendingGodScript.getGod();
-
 
         // Check if the Image component is found
         if (sprite != null)

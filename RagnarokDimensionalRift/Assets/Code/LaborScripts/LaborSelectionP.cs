@@ -32,7 +32,7 @@ public class LaborSelectionP : MonoBehaviour
         {
             // Load the icon sprite (you can set this in the Unity Editor)
             Sprite sprite = Resources.Load<Sprite>("GodSprites/CthulhuSprite");
-            Sprite godIcon = Resources.Load<Sprite>("GodIcons/CthulhuIcon");
+            Sprite godIcon = Resources.Load<Sprite>("GodIcons/newCthulhuIcon");
             string description = "Cthulhu - described as a monstrous being with an octopoid head, " +
                 "a scaly body, and bat-like wings. It is part of a pantheon of cosmic deities known as " +
                 "the Great Old Ones.";
@@ -50,7 +50,7 @@ public class LaborSelectionP : MonoBehaviour
         {
             // Load the icon sprite (you can set this in the Unity Editor)
             Sprite sprite = Resources.Load<Sprite>("GodSprites/ZeusSprite");
-            Sprite godIcon = Resources.Load<Sprite>("GodIcons/ZeusIcon");
+            Sprite godIcon = Resources.Load<Sprite>("GodIcons/newZeusIcon");
             string description = "Zeus - depicted as a powerful and majestic figure, wielding a thunderbolt " +
                 "as his symbol of authority. One of the big three of the Greek Gods. The god of lighting in " +
                 "Greek mythology, also seen as the most important Greek God.";
@@ -68,7 +68,7 @@ public class LaborSelectionP : MonoBehaviour
         {
             // Load the icon sprite (you can set this in the Unity Editor)
             Sprite sprite = Resources.Load<Sprite>("GodSprites/DionysusSprite");
-            Sprite godIcon = Resources.Load<Sprite>("GodIcons/DionysusIcon");
+            Sprite godIcon = Resources.Load<Sprite>("GodIcons/newDionysusIcon");
             string description = "Dionysus - known as the god of wine, festivities, and theater. One of the " +
                 "Twelve Greek Olympians.";
             // Create a new god with a specified icon
@@ -85,7 +85,7 @@ public class LaborSelectionP : MonoBehaviour
         {
             // Load the icon sprite (you can set this in the Unity Editor)
             Sprite sprite = Resources.Load<Sprite>("GodSprites/NeptuneSprite");
-            Sprite godIcon = Resources.Load<Sprite>("GodIcons/NeptuneIcon");
+            Sprite godIcon = Resources.Load<Sprite>("GodIcons/newNeptuneIcon");
             string description = "Neptune - god of the sea, freshwater, earthquakes, and horses in Roman mythology. " +
                 "He is one of the twelve Olympian deities and holds a position of great importance among the Roman " +
                 "gods. Neptune is often depicted as a powerful and bearded deity, holding a trident";
@@ -103,7 +103,7 @@ public class LaborSelectionP : MonoBehaviour
         {
             // Load the icon sprite (you can set this in the Unity Editor)
             Sprite sprite = Resources.Load<Sprite>("GodSprites/ShivaSprite");
-            Sprite godIcon = Resources.Load<Sprite>("GodIcons/ShivaIcon");
+            Sprite godIcon = Resources.Load<Sprite>("GodIcons/newShivaIcon");
             string description = "Shiva - Hindu god of destruction. One of the most important Hindu Gods. " +
                 "Described as having 3 eyes, multiple hands holding a trident and skull.";
             // Create a new god with a specified icon
@@ -120,7 +120,7 @@ public class LaborSelectionP : MonoBehaviour
         {
             // Load the icon sprite (you can set this in the Unity Editor)
             Sprite sprite = Resources.Load<Sprite>("GodSprites/BabaYagaSprite");
-            Sprite godIcon = Resources.Load<Sprite>("GodIcons/BabaYagaIcon");
+            Sprite godIcon = Resources.Load<Sprite>("GodIcons/newBabaYagaIcon");
             string description = "Baba Yaga - supernatural and often malevolent character, appearing as a hag " +
                 "or witch with distinctive features. She is known for her bizarre and unsettling behavior, living " +
                 "in a hut that stands on chicken legs and surrounded by a fence made of human bones. Prominent " +
@@ -139,7 +139,7 @@ public class LaborSelectionP : MonoBehaviour
         {
             // Load the icon sprite (you can set this in the Unity Editor)
             Sprite sprite = Resources.Load<Sprite>("GodSprites/ThorSprite");
-            Sprite godIcon = Resources.Load<Sprite>("GodIcons/ThorIcon");
+            Sprite godIcon = Resources.Load<Sprite>("GodIcons/newThorIcon");
             string description = "Thor - God of thunder, lightning, storms, and strength in Norse mythology. " +
                 "He is a member of the Aesir, the principal group of gods in the Norse pantheon, and is often " +
                 "depicted as a mighty and red-bearded warrior wielding the powerful hammer, Mjolnir.";
@@ -157,7 +157,7 @@ public class LaborSelectionP : MonoBehaviour
         {
             // Load the icon sprite (you can set this in the Unity Editor)
             Sprite sprite = Resources.Load<Sprite>("GodSprites/AmaterasuSprite");
-            Sprite godIcon = Resources.Load<Sprite>("GodIcons/AmaterasuIcon");
+            Sprite godIcon = Resources.Load<Sprite>("GodIcons/newAmaterasuIcon");
             string description = "Amaterasu - Amaterasu is a central deity in Japanese Shinto mythology, " +
                 "revered as the goddess of the sun and considered one of the most important and benevolent " +
                 "figures in the Shinto pantheon.";
@@ -175,7 +175,7 @@ public class LaborSelectionP : MonoBehaviour
         {
             // Load the icon sprite (you can set this in the Unity Editor)
             Sprite sprite = Resources.Load<Sprite>("GodSprites/BeelzebubSprite");
-            Sprite godIcon = Resources.Load<Sprite>("GodIcons/BeelzebubIcon");
+            Sprite godIcon = Resources.Load<Sprite>("GodIcons/newBeelzebubIcon");
             string description = "Beelzebub - Beelzebub is commonly known as a demonic figure in Christian " +
                 "demonology. The name is often used as another title for Satan or a high-ranking demon. Has " +
                 "historical roots in the worship of a Philistine god named Baal-Zebub, which means " +
@@ -194,7 +194,7 @@ public class LaborSelectionP : MonoBehaviour
         {
             // Load the icon sprite (you can set this in the Unity Editor)
             Sprite sprite = Resources.Load<Sprite>("GodSprites/TyphonSprite");
-            Sprite godIcon = Resources.Load<Sprite>("GodIcons/TyphonIcon");
+            Sprite godIcon = Resources.Load<Sprite>("GodIcons/newTyphonIcon");
             string description = "Typhon - Monstrous figure in Greek mythology, often regarded as one of the " +
                 "most powerful and fearsome beings. Described as a colossal, hundred-headed monster with fiery " +
                 "eyes and an immense wingspan.";
@@ -212,7 +212,7 @@ public class LaborSelectionP : MonoBehaviour
         {
             // Load the icon sprite (you can set this in the Unity Editor)
             Sprite sprite = Resources.Load<Sprite>("GodSprites/BoogeymanSprite");
-            Sprite godIcon = Resources.Load<Sprite>("GodIcons/BoogeymanIcon");
+            Sprite godIcon = Resources.Load<Sprite>("GodIcons/newBoogeymanIcon");
             string description = "Boogeyman - The Boogeyman's appearance is often left deliberately vague and " +
                 "amorphous. It may take on various forms, allowing it to embody the fears and imagination of " +
                 "different cultures.";

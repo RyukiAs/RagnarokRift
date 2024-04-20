@@ -302,6 +302,17 @@ public class AttackManager : MonoBehaviour
 
         TextMeshProUGUI text = defender.GetComponentInChildren<TextMeshProUGUI>();
 
+        Transform hpBarTransform = defender.transform.Find("hpbackground/hpbar");
+
+        //Transform defenderTrans = defender.transform;
+        //Transform background = defenderTrans.Find("hpbackground");
+        //Transform getHpTrans = background.Find("hpbar");
+        //Image hpBar = getHpTrans.GetComponent<Image>();
+
+        //SetGodOnPrefab defendingGodScript = defender.GetComponent<SetGodOnPrefab>();
+        //God defendingGod = defendingGodScript.getGod();
+
+
         // Check if the Image component is found
         if (sprite != null)
         {
@@ -313,6 +324,14 @@ public class AttackManager : MonoBehaviour
             sprite.color = Color.red;
 
             text.text = damage.ToString();
+
+            //calc new ratio for hpBar
+            SetGodOnPrefab defendingGodScript = defender.GetComponent<SetGodOnPrefab>();
+            God defendingGod = defendingGodScript.getGod();
+            float newHp = defendingGod.health;
+            float maxHp = defendingGod.healthVar;
+            float ratio = newHp / maxHp;
+            hpBarTransform.localScale = new Vector3(ratio, 1f, 1f);
 
             //// Wait for a short delay after the attack
             yield return new WaitForSeconds(0.5f);

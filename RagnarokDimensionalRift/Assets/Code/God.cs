@@ -16,6 +16,9 @@ public class God
     public int health;
     public int attack;
     public int defense;
+    public int healthVar;
+    public int attackVar;
+    public int defenseVar;
     public string description;
     public Sprite sprite;
     public Vector2 position; //Vector2?
@@ -30,10 +33,13 @@ public class God
         this.level = 1;
         this.baseHealth = baseHealth;
         this.health = this.baseHealth;
+        this.healthVar = health;
         this.baseAttack = baseAttack;
         this.attack = this.baseAttack;
+        this.attackVar = this.attack;
         this.baseDefense = baseDefense;
         this.defense = this.baseDefense;
+        this.defenseVar = this.defense;
         this.description = description;
         this.sprite = sprite;
         this.position = new Vector2(0f,0f);
@@ -61,6 +67,10 @@ public class God
         this.health = (int)hpResult;
         this.attack = (int)attackResult;
         this.defense = (int)defResult;
+
+        this.healthVar = health;
+        this.attackVar= attack;
+        this.defenseVar = defense;
         
     }
 

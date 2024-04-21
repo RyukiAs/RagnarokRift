@@ -14,7 +14,7 @@ public class AttackManager : MonoBehaviour
     private Canvas canvas;
 
     private float cooldownDuration = 1f; // Cooldown duration in seconds
-    private float offsetDuration = 1.5f; // Offset duration between attacks in seconds
+    private float offsetDuration = 1f; // Offset duration between attacks in seconds
     private List<GameObject> Team1Prefabs = new List<GameObject>();
     private List<GameObject> Team2Prefabs = new List<GameObject>();
     private List<GameObject> Holder = new List<GameObject>();
@@ -220,7 +220,7 @@ public class AttackManager : MonoBehaviour
                                          0f);
 
         // Duration of the movement
-        float moveDuration = 0.5f;
+        float moveDuration = 0.4f;
         // Elapsed time
         float elapsedTime = 0f;
 
@@ -359,7 +359,7 @@ public class AttackManager : MonoBehaviour
         //Debug.Log($"targetPosition moving back to {targetPosition}");
 
         // Duration of the movement
-        float moveDuration = 0.5f;
+        float moveDuration = 0.4f;
 
         // Elapsed time
         float elapsedTime = 0f;

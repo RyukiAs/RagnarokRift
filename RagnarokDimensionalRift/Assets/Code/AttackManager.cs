@@ -23,6 +23,9 @@ public class AttackManager : MonoBehaviour
     private List<GameObject> Team1AttackOrderPrefabs = new List<GameObject>();
     private List<GameObject> Team2AttackOrderPrefabs = new List<GameObject>();
 
+    // List to store references to active coroutines
+    private List<Coroutine> activeCoroutines = new List<Coroutine>();
+
 
     private void Start()
     {
@@ -80,7 +83,9 @@ public class AttackManager : MonoBehaviour
 
         SortPrefabsByPosition();
 
-        StartCoroutine(startFight());
+        Coroutine battleCoroutine = StartCoroutine(startFight());
+
+        activeCoroutines.Add(battleCoroutine);
     }
 
     private void SortPrefabsByPosition()
@@ -136,16 +141,18 @@ public class AttackManager : MonoBehaviour
 
             Debug.Log("Team1AttackOrderPrefabs count: " + Team1AttackOrderPrefabs.Count());
             Debug.Log("Team2AttackOrderPrefabs count: " + Team2AttackOrderPrefabs.Count());
-            if (Team1AttackOrderPrefabs.Count() <= 0)
+            if (Team1AttackOrderPrefabs.Count <= 0)
             {
                 battleInProgress = false;
                 Debug.Log("Defeat");
+                EndBattle(); //end battle when team1 is defeated
                 yield break;
             }
-            else if (Team2AttackOrderPrefabs.Count() <= 0)
+            else if (Team2AttackOrderPrefabs.Count <= 0)
             {
                 battleInProgress = false;
                 Debug.Log("Victory");
+                EndBattle(); //end battle when team1 is defeated
                 yield break;
             }
 
@@ -154,45 +161,19 @@ public class AttackManager : MonoBehaviour
                 bool attack = godToAttack.attacking;
                 if (attack)
                 {
-                    if (Team2AttackOrderPrefabs[0] != null)
-                    {
-                        defendPrefab = Team2AttackOrderPrefabs[0];
-                    }
-                    else if (Team2AttackOrderPrefabs.Count() <= 0)
-                    {
-                        defendPrefab = null;
-                        battleInProgress = false;
-                        Debug.Log("Victory");
-                        yield break;
-                    }
-                    else
-                    {
-                        defendPrefab = null;
-                        yield break;
-                    }
+                    defendPrefab = Team2AttackOrderPrefabs.Count > 0 ? Team2AttackOrderPrefabs[0] : null;
                 }
                 else
                 {
-                    if (Team1AttackOrderPrefabs[0] != null)
-                    {
-                        defendPrefab = Team1AttackOrderPrefabs[0];
-                    }
-                    else if (Team1AttackOrderPrefabs.Count() <= 0)
-                    {
-                        defendPrefab = null;
-                        battleInProgress = false;
-                        Debug.Log("Defeat");
-                        yield break;
-                    }
-                    else
-                    {
-                        defendPrefab = null;
-                        yield break;
-                    }
+                    defendPrefab = Team1AttackOrderPrefabs.Count > 0 ? Team1AttackOrderPrefabs[0] : null;
                 }
 
-                // Initiate attack for the god
-                StartCoroutine(Move(attackPrefab, defendPrefab));
+                if (defendPrefab != null)
+                {
+                    // Initiate attack for the god
+                    Coroutine moveCoroutine = StartCoroutine(Move(attackPrefab, defendPrefab));
+                    activeCoroutines.Add(moveCoroutine);
+                }
 
                 // Move to the next prefab in the list
                 currentIndex = (currentIndex + 1) % totalPrefabs;
@@ -289,8 +270,11 @@ public class AttackManager : MonoBehaviour
         {
             Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName}, but no damage is dealt.");
         }
-        StartCoroutine(AttackVisual(defendPrefab, damage));
-        StartCoroutine(MoveBack(attackPrefab));
+        Coroutine attackVisualCoroutine = StartCoroutine(AttackVisual(defendPrefab, damage));
+        activeCoroutines.Add(attackVisualCoroutine);
+
+        Coroutine moveBackCoroutine = StartCoroutine(MoveBack(attackPrefab));
+        activeCoroutines.Add(moveBackCoroutine);
     }
 
     private IEnumerator AttackVisual(GameObject defender, int damage)
@@ -383,6 +367,18 @@ public class AttackManager : MonoBehaviour
         // Ensure the attackPrefab reaches the target position
         attackPrefab.transform.position = targetPosition;
 
+    }
+
+    private void EndBattle()
+    {
+        // Stop all active coroutines
+        foreach (Coroutine coroutine in activeCoroutines)
+        {
+            StopCoroutine(coroutine);
+        }
+
+        // Clear the list of active coroutines
+        activeCoroutines.Clear();
     }
 
 

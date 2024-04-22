@@ -266,10 +266,12 @@ public class AttackManager : MonoBehaviour
                 if (defendingGod.attacking)
                 {
                     Team1AttackOrderPrefabs.Remove(defendPrefab);
+                    defendPrefab.SetActive(false);
                 }
                 else
                 {
                     Team2AttackOrderPrefabs.Remove(defendPrefab);
+                    defendPrefab.SetActive(false);
                 }
                 Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName} for {damage} damage and kills him.");
             }

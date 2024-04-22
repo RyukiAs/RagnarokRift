@@ -91,8 +91,8 @@ public class AttackManager : MonoBehaviour
     private void SortPrefabsByPosition()
     {
         // Sort the prefabs based on their X positions
-        Team1AttackOrderPrefabs.Clear();
-        Team2AttackOrderPrefabs.Clear();
+        //Team1AttackOrderPrefabs.Clear();
+        //Team2AttackOrderPrefabs.Clear();
 
         Team1AttackOrderPrefabs = Team1Prefabs;
         Team2AttackOrderPrefabs = Team2Prefabs;

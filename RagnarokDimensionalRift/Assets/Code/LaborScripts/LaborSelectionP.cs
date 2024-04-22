@@ -299,6 +299,14 @@ public class LaborSelectionP : MonoBehaviour
 
     }
 
+    public void UpdateGodHealthOnEnd()
+    {
+        foreach(God god in gameController.GetLaborGods())
+        {
+            god.CalculateUpgradedStats(god.level);
+        }
+    }
+
     //Adds or removes gods to EssenceList and Adds
     //the prefab in order to be able to access UI elements
     public void addGodToList()
@@ -374,7 +382,6 @@ public class LaborSelectionP : MonoBehaviour
             textString.text = "";
 
         }
-
 
 
     }

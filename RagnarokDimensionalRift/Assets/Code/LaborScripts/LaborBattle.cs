@@ -50,8 +50,9 @@ public class LaborBattle : MonoBehaviour
     private void OnDisable()
     {
         Transform parentTransform = this.transform;
+        Transform testHold = parentTransform.Find("testHold");
 
-        foreach (Transform child in parentTransform)
+        foreach (Transform child in testHold)
         {
             if (!child.CompareTag("Player"))
             {

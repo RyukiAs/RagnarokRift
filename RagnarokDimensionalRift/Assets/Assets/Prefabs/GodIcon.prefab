@@ -281,6 +281,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf431fcfe9637bd4bb0a44875b9a3dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  godPass:
+    godName: 
+    grade: 0
+    icon: {fileID: 0}
+    level: 0
+    baseHealth: 0
+    baseAttack: 0
+    baseDefense: 0
+    health: 0
+    attack: 0
+    defense: 0
+    healthVar: 0
+    attackVar: 0
+    defenseVar: 0
+    description: 
+    sprite: {fileID: 0}
+    position: {x: 0, y: 0}
+    canAttack: 0
+    attacking: 0
   canvasNameToToggle: GodScreen
 --- !u!1 &6840181657012143162
 GameObject:

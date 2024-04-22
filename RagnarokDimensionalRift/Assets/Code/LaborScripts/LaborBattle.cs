@@ -53,7 +53,10 @@ public class LaborBattle : MonoBehaviour
 
         foreach (Transform child in parentTransform)
         {
-            Destroy(child.gameObject);
+            if (!child.CompareTag("Player"))
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 

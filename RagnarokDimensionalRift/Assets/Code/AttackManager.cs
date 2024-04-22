@@ -146,6 +146,10 @@ public class AttackManager : MonoBehaviour
                 battleInProgress = false;
                 Debug.Log("Defeat");
                 EndBattle(); //end battle when team1 is defeated
+                Transform transCanvas = canvas.transform;
+                Transform defeatTrans = transCanvas.Find("DefeatScreen");
+                GameObject defeatObj = defeatTrans.gameObject;
+                defeatObj.SetActive(true);
                 yield break;
             }
             else if (Team2AttackOrderPrefabs.Count <= 0)
@@ -153,6 +157,10 @@ public class AttackManager : MonoBehaviour
                 battleInProgress = false;
                 Debug.Log("Victory");
                 EndBattle(); //end battle when team1 is defeated
+                Transform transCanvas = canvas.transform;
+                Transform victoryTrans = transCanvas.Find("VictoryScreen");
+                GameObject victoryObj = victoryTrans.gameObject;
+                victoryObj.SetActive(true);
                 yield break;
             }
 
@@ -303,9 +311,11 @@ public class AttackManager : MonoBehaviour
             //calc new ratio for hpBar
             SetGodOnPrefab defendingGodScript = defender.GetComponent<SetGodOnPrefab>();
             God defendingGod = defendingGodScript.getGod();
-            float newHp = defendingGod.health;
+            int newHp = Mathf.Max(defendingGod.health, 0); // Ensure health doesn't go below zero
             float maxHp = defendingGod.healthVar;
             float ratio = newHp / maxHp;
+
+            // Set the health bar scale
             hpBarTransform.localScale = new Vector3(ratio, 1f, 1f);
 
             //// Wait for a short delay after the attack

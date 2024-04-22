@@ -10249,7 +10249,7 @@ GameObject:
   - component: {fileID: 426653829}
   m_Layer: 5
   m_Name: VictoryScreen
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12456,7 +12456,7 @@ GameObject:
   - component: {fileID: 522881540}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14149,7 +14149,7 @@ GameObject:
   - component: {fileID: 607494751}
   m_Layer: 5
   m_Name: DefeatScreen
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20471,7 +20471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &932131442
 Transform:
   m_ObjectHideFlags: 0
@@ -35712,7 +35712,7 @@ GameObject:
   - component: {fileID: 1535864972}
   m_Layer: 5
   m_Name: GoToMain
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46200,7 +46200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1903455822
 Transform:
   m_ObjectHideFlags: 0
@@ -46948,7 +46948,7 @@ GameObject:
   - component: {fileID: 1939750444}
   m_Layer: 5
   m_Name: Holder
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

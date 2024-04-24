@@ -22,6 +22,7 @@ public class AttackManager : MonoBehaviour
     private List<GameObject> AttackOrderPrefabs = new List<GameObject>();
     private List<GameObject> Team1AttackOrderPrefabs = new List<GameObject>();
     private List<GameObject> Team2AttackOrderPrefabs = new List<GameObject>();
+    private int currentIndex;
 
     // List to store references to active coroutines
     private List<Coroutine> activeCoroutines = new List<Coroutine>();
@@ -274,6 +275,13 @@ public class AttackManager : MonoBehaviour
                     defendPrefab.SetActive(false);
                 }
                 Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName} for {damage} damage and kills him.");
+
+                if (currentIndex >= Holder.IndexOf(defendPrefab))
+                {
+                    currentIndex--;
+                    // Ensure currentIndex remains within the valid range
+                    currentIndex = Mathf.Clamp(currentIndex, 0, Holder.Count - 1);
+                }
             }
         }
         else

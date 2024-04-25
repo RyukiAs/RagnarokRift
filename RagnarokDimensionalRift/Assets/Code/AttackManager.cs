@@ -271,13 +271,15 @@ public class AttackManager : MonoBehaviour
                 {
                     //Team1AttackOrderPrefabs.Remove(defendPrefab);
                     Team1Deaths += 1;
-                    defendPrefab.SetActive(false);
+                    //defendPrefab.SetActive(false);
+                    defendPrefab.transform.position = new Vector3(1000f, 1000f, 0f);
                 }
                 else
                 {
                     //Team2AttackOrderPrefabs.Remove(defendPrefab);
                     Team2Deaths+= 1;
-                    defendPrefab.SetActive(false);
+                    //defendPrefab.SetActive(false);
+                    defendPrefab.transform.position = new Vector3(1000f, 1000f, 0f);
                 }
                 Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName} for {damage} damage and kills him.");
 

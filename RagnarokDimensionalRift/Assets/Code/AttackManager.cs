@@ -22,7 +22,8 @@ public class AttackManager : MonoBehaviour
     private List<GameObject> AttackOrderPrefabs = new List<GameObject>();
     private List<GameObject> Team1AttackOrderPrefabs = new List<GameObject>();
     private List<GameObject> Team2AttackOrderPrefabs = new List<GameObject>();
-    private int currentIndex;
+    private int Team1Deaths;
+    private int Team2Deaths;
 
     // List to store references to active coroutines
     private List<Coroutine> activeCoroutines = new List<Coroutine>();
@@ -44,6 +45,8 @@ public class AttackManager : MonoBehaviour
         canvas = canvasUse;
         AttackOrderPrefabs.Clear();
         Holder.Clear();
+        Team1Deaths= 0;
+        Team2Deaths= 0;
 
         Team1Prefabs = team1;
         Team2Prefabs = team2;
@@ -142,7 +145,7 @@ public class AttackManager : MonoBehaviour
 
             Debug.Log("Team1AttackOrderPrefabs count: " + Team1AttackOrderPrefabs.Count());
             Debug.Log("Team2AttackOrderPrefabs count: " + Team2AttackOrderPrefabs.Count());
-            if (Team1AttackOrderPrefabs.Count <= 0)
+            if (Team1Deaths >= Team1AttackOrderPrefabs.Count)
             {
                 battleInProgress = false;
                 Debug.Log("Defeat");
@@ -153,7 +156,7 @@ public class AttackManager : MonoBehaviour
                 defeatObj.SetActive(true);
                 yield break;
             }
-            else if (Team2AttackOrderPrefabs.Count <= 0)
+            else if (Team2Deaths >= Team2AttackOrderPrefabs.Count)
             {
                 battleInProgress = false;
                 Debug.Log("Victory");
@@ -170,11 +173,11 @@ public class AttackManager : MonoBehaviour
                 bool attack = godToAttack.attacking;
                 if (attack)
                 {
-                    defendPrefab = Team2AttackOrderPrefabs.Count > 0 ? Team2AttackOrderPrefabs[0] : null;
+                    defendPrefab = Team2AttackOrderPrefabs.Count > 0 ? Team2AttackOrderPrefabs[Team2Deaths] : null;
                 }
                 else
                 {
-                    defendPrefab = Team1AttackOrderPrefabs.Count > 0 ? Team1AttackOrderPrefabs[0] : null;
+                    defendPrefab = Team1AttackOrderPrefabs.Count > 0 ? Team1AttackOrderPrefabs[Team1Deaths] : null;
                 }
 
                 if (defendPrefab != null)
@@ -266,22 +269,18 @@ public class AttackManager : MonoBehaviour
                 //Holder.Remove(defendPrefab);
                 if (defendingGod.attacking)
                 {
-                    Team1AttackOrderPrefabs.Remove(defendPrefab);
+                    //Team1AttackOrderPrefabs.Remove(defendPrefab);
+                    Team1Deaths += 1;
                     defendPrefab.SetActive(false);
                 }
                 else
                 {
-                    Team2AttackOrderPrefabs.Remove(defendPrefab);
+                    //Team2AttackOrderPrefabs.Remove(defendPrefab);
+                    Team2Deaths+= 1;
                     defendPrefab.SetActive(false);
                 }
                 Debug.Log($"{attackingGod.godName} attacks {defendingGod.godName} for {damage} damage and kills him.");
 
-                if (currentIndex >= Holder.IndexOf(defendPrefab))
-                {
-                    currentIndex--;
-                    // Ensure currentIndex remains within the valid range
-                    currentIndex = Mathf.Clamp(currentIndex, 0, Holder.Count - 1);
-                }
             }
         }
         else

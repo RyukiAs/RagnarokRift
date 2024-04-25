@@ -192,6 +192,10 @@ public class AttackManager : MonoBehaviour
 
                 // Wait for offset duration before next attack
                 yield return new WaitForSeconds(offsetDuration);
+            }else
+            {
+                // Move to the next prefab in the list
+                currentIndex = (currentIndex + 1) % totalPrefabs;
             }
 
         }

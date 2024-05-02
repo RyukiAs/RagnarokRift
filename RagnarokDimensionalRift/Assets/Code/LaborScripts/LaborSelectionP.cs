@@ -38,9 +38,9 @@ public class LaborSelectionP : MonoBehaviour
                 "the Great Old Ones.";
             // Create a new god with a specified icon
             bool attacking = false;
-            int baseHealth = 1000;
-            int baseAttack = 130;
-            int baseDefense = 30;
+            int baseHealth = 1790;
+            int baseAttack = 150;
+            int baseDefense = 80;
             God newGod = new God("Cthulhu", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
@@ -56,9 +56,9 @@ public class LaborSelectionP : MonoBehaviour
                 "Greek mythology, also seen as the most important Greek God.";
             // Create a new god with a specified icon
             bool attacking = false;
-            int baseHealth = 1000;
-            int baseAttack = 130;
-            int baseDefense = 30;
+            int baseHealth = 1380;
+            int baseAttack = 205;
+            int baseDefense = 65;
             God newGod = new God("Zeus", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
@@ -73,9 +73,9 @@ public class LaborSelectionP : MonoBehaviour
                 "Twelve Greek Olympians.";
             // Create a new god with a specified icon
             bool attacking = false;
-            int baseHealth = 1000;
-            int baseAttack = 130;
-            int baseDefense = 30;
+            int baseHealth = 1600;
+            int baseAttack = 170;
+            int baseDefense = 70;
             God newGod = new God("Dionysus", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
@@ -91,9 +91,9 @@ public class LaborSelectionP : MonoBehaviour
                 "gods. Neptune is often depicted as a powerful and bearded deity, holding a trident";
             // Create a new god with a specified icon
             bool attacking = false;
-            int baseHealth = 1000;
-            int baseAttack = 130;
-            int baseDefense = 30;
+            int baseHealth = 1440;
+            int baseAttack = 210;
+            int baseDefense = 57;
             God newGod = new God("Neptune", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
@@ -108,9 +108,9 @@ public class LaborSelectionP : MonoBehaviour
                 "Described as having 3 eyes, multiple hands holding a trident and skull.";
             // Create a new god with a specified icon
             bool attacking = false;
-            int baseHealth = 1000;
-            int baseAttack = 130;
-            int baseDefense = 30;
+            int baseHealth = 1300;
+            int baseAttack = 235;
+            int baseDefense = 50;
             God newGod = new God("Shiva", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
@@ -127,9 +127,9 @@ public class LaborSelectionP : MonoBehaviour
                 "figure in Slavic folklore.";
             // Create a new god with a specified icon
             bool attacking = false;
-            int baseHealth = 1000;
-            int baseAttack = 130;
-            int baseDefense = 30;
+            int baseHealth = 1360;
+            int baseAttack = 200;
+            int baseDefense = 60;
             God newGod = new God("Baba Yaga", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
@@ -145,9 +145,9 @@ public class LaborSelectionP : MonoBehaviour
                 "depicted as a mighty and red-bearded warrior wielding the powerful hammer, Mjolnir.";
             // Create a new god with a specified icon
             bool attacking = false;
-            int baseHealth = 1000;
-            int baseAttack = 130;
-            int baseDefense = 30;
+            int baseHealth = 1340;
+            int baseAttack = 220;
+            int baseDefense = 62;
             God newGod = new God("Thor", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
@@ -163,9 +163,9 @@ public class LaborSelectionP : MonoBehaviour
                 "figures in the Shinto pantheon.";
             // Create a new god with a specified icon
             bool attacking = false;
-            int baseHealth = 1000;
-            int baseAttack = 130;
-            int baseDefense = 30;
+            int baseHealth = 1520;
+            int baseAttack = 168;
+            int baseDefense = 68;
             God newGod = new God("Amaterasu", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
@@ -182,9 +182,9 @@ public class LaborSelectionP : MonoBehaviour
                 "\"Lord of the Flies.\"";
             // Create a new god with a specified icon
             bool attacking = false;
-            int baseHealth = 1000;
-            int baseAttack = 130;
-            int baseDefense = 30;
+            int baseHealth = 1332;
+            int baseAttack = 225;
+            int baseDefense = 57;
             God newGod = new God("Beelzebub", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
@@ -200,9 +200,9 @@ public class LaborSelectionP : MonoBehaviour
                 "eyes and an immense wingspan.";
             // Create a new god with a specified icon
             bool attacking = false;
-            int baseHealth = 1000;
-            int baseAttack = 130;
-            int baseDefense = 30;
+            int baseHealth = 1800;
+            int baseAttack = 155;
+            int baseDefense = 78;
             God newGod = new God("Typhon", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
@@ -218,9 +218,9 @@ public class LaborSelectionP : MonoBehaviour
                 "different cultures.";
             // Create a new god with a specified icon
             bool attacking = false;
-            int baseHealth = 1000;
-            int baseAttack = 130;
-            int baseDefense = 30;
+            int baseHealth = 1320;
+            int baseAttack = 230;
+            int baseDefense = 53;
             God newGod = new God("Boogeyman", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;

@@ -37,11 +37,16 @@ public class LaborSelectionP : MonoBehaviour
                 "a scaly body, and bat-like wings. It is part of a pantheon of cosmic deities known as " +
                 "the Great Old Ones.";
             // Create a new god with a specified icon
+            List<Sprite> animation = new List<Sprite> {
+                    Resources.Load<Sprite>("GodAnimationFrames/Cthulhu/frame_001"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Cthulhu/frame_002"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Cthulhu/frame_003"),
+            };
             bool attacking = false;
             int baseHealth = 1790;
             int baseAttack = 150;
             int baseDefense = 80;
-            God newGod = new God("Cthulhu", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
+            God newGod = new God("Cthulhu", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -55,11 +60,21 @@ public class LaborSelectionP : MonoBehaviour
                 "as his symbol of authority. One of the big three of the Greek Gods. The god of lighting in " +
                 "Greek mythology, also seen as the most important Greek God.";
             // Create a new god with a specified icon
+            List<Sprite> animation = new List<Sprite> {
+                    Resources.Load<Sprite>("GodAnimationFrames/Zeus/frame_001"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Zeus/frame_002"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Zeus/frame_003"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Zeus/frame_004"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Zeus/frame_005"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Zeus/frame_006"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Zeus/frame_007"),
+                    // Add more frames as needed
+            };
             bool attacking = false;
             int baseHealth = 1380;
             int baseAttack = 205;
             int baseDefense = 65;
-            God newGod = new God("Zeus", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
+            God newGod = new God("Zeus", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -72,11 +87,24 @@ public class LaborSelectionP : MonoBehaviour
             string description = "Dionysus - known as the god of wine, festivities, and theater. One of the " +
                 "Twelve Greek Olympians.";
             // Create a new god with a specified icon
+            List<Sprite> animation = new List<Sprite> {
+                    Resources.Load<Sprite>("GodAnimationFrames/Dionysus/frame_001"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Dionysus/frame_002"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Dionysus/frame_003"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Dionysus/frame_004"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Dionysus/frame_005"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Dionysus/frame_006"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Dionysus/frame_007"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Dionysus/frame_008"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Dionysus/frame_009"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Dionysus/frame_010"),
+                    // Add more frames as needed
+                };
             bool attacking = false;
             int baseHealth = 1600;
             int baseAttack = 170;
             int baseDefense = 70;
-            God newGod = new God("Dionysus", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
+            God newGod = new God("Dionysus", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -90,11 +118,22 @@ public class LaborSelectionP : MonoBehaviour
                 "He is one of the twelve Olympian deities and holds a position of great importance among the Roman " +
                 "gods. Neptune is often depicted as a powerful and bearded deity, holding a trident";
             // Create a new god with a specified icon
+            List<Sprite> animation = new List<Sprite> {
+                    Resources.Load<Sprite>("GodAnimationFrames/Neptune/frame_001"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Neptune/frame_002"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Neptune/frame_003"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Neptune/frame_004"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Neptune/frame_005"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Neptune/frame_006"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Neptune/frame_007"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Neptune/frame_008"),
+                    // Add more frames as needed
+                };
             bool attacking = false;
             int baseHealth = 1440;
             int baseAttack = 210;
             int baseDefense = 57;
-            God newGod = new God("Neptune", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
+            God newGod = new God("Neptune", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -107,11 +146,24 @@ public class LaborSelectionP : MonoBehaviour
             string description = "Shiva - Hindu god of destruction. One of the most important Hindu Gods. " +
                 "Described as having 3 eyes, multiple hands holding a trident and skull.";
             // Create a new god with a specified icon
+            List<Sprite> animation = new List<Sprite> {
+                    Resources.Load<Sprite>("GodAnimationFrames/Shiva/frame_001"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Shiva/frame_002"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Shiva/frame_003"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Shiva/frame_004"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Shiva/frame_005"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Shiva/frame_006"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Shiva/frame_007"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Shiva/frame_008"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Shiva/frame_009"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Shiva/frame_010"),
+                    // Add more frames as needed
+                };
             bool attacking = false;
             int baseHealth = 1300;
             int baseAttack = 235;
             int baseDefense = 50;
-            God newGod = new God("Shiva", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
+            God newGod = new God("Shiva", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -126,11 +178,17 @@ public class LaborSelectionP : MonoBehaviour
                 "in a hut that stands on chicken legs and surrounded by a fence made of human bones. Prominent " +
                 "figure in Slavic folklore.";
             // Create a new god with a specified icon
+            List<Sprite> animation = new List<Sprite> {
+                    Resources.Load<Sprite>("GodAnimationFrames/BabaYaga/frame_001"),
+                    Resources.Load<Sprite>("GodAnimationFrames/BabaYaga/frame_002"),
+                    Resources.Load<Sprite>("GodAnimationFrames/BabaYaga/frame_003"),
+                    Resources.Load<Sprite>("GodAnimationFrames/BabaYaga/frame_004"),
+                };
             bool attacking = false;
             int baseHealth = 1360;
             int baseAttack = 200;
             int baseDefense = 60;
-            God newGod = new God("Baba Yaga", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
+            God newGod = new God("Baba Yaga", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -144,11 +202,22 @@ public class LaborSelectionP : MonoBehaviour
                 "He is a member of the Aesir, the principal group of gods in the Norse pantheon, and is often " +
                 "depicted as a mighty and red-bearded warrior wielding the powerful hammer, Mjolnir.";
             // Create a new god with a specified icon
+            List<Sprite> animation = new List<Sprite> {
+                    Resources.Load<Sprite>("GodAnimationFrames/Thor/frame_001"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Thor/frame_002"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Thor/frame_003"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Thor/frame_004"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Thor/frame_005"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Thor/frame_006"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Thor/frame_007"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Thor/frame_008"),
+                    // Add more frames as needed
+                };
             bool attacking = false;
             int baseHealth = 1340;
             int baseAttack = 220;
             int baseDefense = 62;
-            God newGod = new God("Thor", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
+            God newGod = new God("Thor", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -162,11 +231,19 @@ public class LaborSelectionP : MonoBehaviour
                 "revered as the goddess of the sun and considered one of the most important and benevolent " +
                 "figures in the Shinto pantheon.";
             // Create a new god with a specified icon
+            List<Sprite> animation = new List<Sprite> {
+                    Resources.Load<Sprite>("GodAnimationFrames/Amaterasu/frame_001"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Amaterasu/frame_002"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Amaterasu/frame_003"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Amaterasu/frame_004"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Amaterasu/frame_005"),
+                    // Add more frames as needed
+                };
             bool attacking = false;
             int baseHealth = 1520;
             int baseAttack = 168;
             int baseDefense = 68;
-            God newGod = new God("Amaterasu", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
+            God newGod = new God("Amaterasu", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -181,11 +258,22 @@ public class LaborSelectionP : MonoBehaviour
                 "historical roots in the worship of a Philistine god named Baal-Zebub, which means " +
                 "\"Lord of the Flies.\"";
             // Create a new god with a specified icon
+            List<Sprite> animation = new List<Sprite> {
+                    Resources.Load<Sprite>("GodAnimationFrames/Beelzebub/frame_001"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Beelzebub/frame_002"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Beelzebub/frame_003"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Beelzebub/frame_004"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Beelzebub/frame_005"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Beelzebub/frame_006"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Beelzebub/frame_007"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Beelzebub/frame_008"),
+                    // Add more frames as needed
+                };
             bool attacking = false;
             int baseHealth = 1332;
             int baseAttack = 225;
             int baseDefense = 57;
-            God newGod = new God("Beelzebub", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
+            God newGod = new God("Beelzebub", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -199,11 +287,21 @@ public class LaborSelectionP : MonoBehaviour
                 "most powerful and fearsome beings. Described as a colossal, hundred-headed monster with fiery " +
                 "eyes and an immense wingspan.";
             // Create a new god with a specified icon
+            List<Sprite> animation = new List<Sprite> {
+                    Resources.Load<Sprite>("GodAnimationFrames/Typhon/frame_001"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Typhon/frame_002"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Typhon/frame_003"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Typhon/frame_004"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Typhon/frame_005"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Typhon/frame_006"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Typhon/frame_007"),
+                    // Add more frames as needed
+                };
             bool attacking = false;
             int baseHealth = 1800;
             int baseAttack = 155;
             int baseDefense = 78;
-            God newGod = new God("Typhon", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
+            God newGod = new God("Typhon", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -217,11 +315,24 @@ public class LaborSelectionP : MonoBehaviour
                 "amorphous. It may take on various forms, allowing it to embody the fears and imagination of " +
                 "different cultures.";
             // Create a new god with a specified icon
+            List<Sprite> animation = new List<Sprite> {
+                    Resources.Load<Sprite>("GodAnimationFrames/Boogeyman/frame_001"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Boogeyman/frame_002"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Boogeyman/frame_003"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Boogeyman/frame_004"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Boogeyman/frame_005"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Boogeyman/frame_006"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Boogeyman/frame_007"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Boogeyman/frame_008"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Boogeyman/frame_009"),
+                    Resources.Load<Sprite>("GodAnimationFrames/Boogeyman/frame_010"),
+                    // Add more frames as needed
+                };
             bool attacking = false;
             int baseHealth = 1320;
             int baseAttack = 230;
             int baseDefense = 53;
-            God newGod = new God("Boogeyman", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense);
+            God newGod = new God("Boogeyman", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
         }

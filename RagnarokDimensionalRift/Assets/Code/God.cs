@@ -1,7 +1,9 @@
 using System.Buffers.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class God
@@ -24,8 +26,9 @@ public class God
     public Vector2 position; //Vector2?
     public bool canAttack;
     public bool attacking;
+    public List<Sprite> animation;
 
-    public God(string godName, int grade, Sprite icon, string description, Sprite sprite, bool attacking, int baseHealth, int baseAttack, int baseDefense)
+    public God(string godName, int grade, Sprite icon, string description, Sprite sprite, bool attacking, int baseHealth, int baseAttack, int baseDefense, List<Sprite> animation)
     {
         this.godName = godName;
         this.grade = grade;
@@ -45,6 +48,7 @@ public class God
         this.position = new Vector2(0f,0f);
         this.canAttack = true;
         this.attacking = attacking;
+        this.animation = animation;
     }
 
     public void CalculateUpgradedStats(int level)

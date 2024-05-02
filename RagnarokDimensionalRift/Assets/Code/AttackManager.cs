@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.WSA;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class AttackManager : MonoBehaviour
 {
@@ -298,6 +299,38 @@ public class AttackManager : MonoBehaviour
 
         Coroutine moveBackCoroutine = StartCoroutine(MoveBack(attackPrefab));
         activeCoroutines.Add(moveBackCoroutine);
+
+        Coroutine animation = StartCoroutine(AnimateAttack(attackPrefab));
+        activeCoroutines.Add(animation);
+
+    }
+
+    private IEnumerator AnimateAttack(GameObject attackPrefab)
+    {
+        SetGodOnPrefab attackingGodScript = attackPrefab.GetComponent<SetGodOnPrefab>();
+        God attackingGod = attackingGodScript.getGod();
+        float AnimationTime = 0.4f;
+
+        List<Sprite> animationFrames = attackingGod.animation;
+        float frameTime = AnimationTime / animationFrames.Count;
+
+        // Get the Image component once outside the loop
+        Image sprite = attackPrefab.GetComponentInChildren<Image>();
+
+        for (int i = 0; i < animationFrames.Count; i++)
+        {
+            // Get the current frame
+            Sprite frame = animationFrames[i];
+
+            // Display the current frame
+            sprite.sprite = frame;
+
+            // Wait for a short duration before moving to the next frame
+            yield return new WaitForSeconds(frameTime);
+        }
+
+        // Set the sprite back to the original sprite after the animation completes
+        sprite.sprite = attackingGod.sprite;
     }
 
     private IEnumerator AttackVisual(GameObject defender, int damage)

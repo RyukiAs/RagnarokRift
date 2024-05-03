@@ -43,10 +43,12 @@ public class LaborSelectionP : MonoBehaviour
                     Resources.Load<Sprite>("GodAnimationFrames/Cthulhu/frame_003"),
             };
             bool attacking = false;
+            int level = 3 * (TrialNum % 5);
+            int grade = (TrialNum / 5) + 1;
             int baseHealth = 1790;
             int baseAttack = 150;
             int baseDefense = 80;
-            God newGod = new God("Cthulhu", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
+            God newGod = new God("Cthulhu", grade, level, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -71,10 +73,12 @@ public class LaborSelectionP : MonoBehaviour
                     // Add more frames as needed
             };
             bool attacking = false;
+            int level = 3 * (TrialNum % 5);
+            int grade = (TrialNum / 5) + 1;
             int baseHealth = 1380;
             int baseAttack = 205;
             int baseDefense = 65;
-            God newGod = new God("Zeus", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
+            God newGod = new God("Zeus", grade, level, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -101,10 +105,12 @@ public class LaborSelectionP : MonoBehaviour
                     // Add more frames as needed
                 };
             bool attacking = false;
+            int level = 3 * (TrialNum % 5);
+            int grade = (TrialNum / 5) + 1;
             int baseHealth = 1600;
             int baseAttack = 170;
             int baseDefense = 70;
-            God newGod = new God("Dionysus", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
+            God newGod = new God("Dionysus", grade, level, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -130,10 +136,12 @@ public class LaborSelectionP : MonoBehaviour
                     // Add more frames as needed
                 };
             bool attacking = false;
+            int level = 3 * (TrialNum % 5);
+            int grade = (TrialNum / 5) + 1;
             int baseHealth = 1440;
             int baseAttack = 210;
             int baseDefense = 57;
-            God newGod = new God("Neptune", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
+            God newGod = new God("Neptune", grade, level, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -160,10 +168,12 @@ public class LaborSelectionP : MonoBehaviour
                     // Add more frames as needed
                 };
             bool attacking = false;
+            int level = 3 * (TrialNum % 5);
+            int grade = (TrialNum / 5) + 1;
             int baseHealth = 1300;
             int baseAttack = 235;
             int baseDefense = 50;
-            God newGod = new God("Shiva", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
+            God newGod = new God("Shiva", grade, level, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -185,10 +195,12 @@ public class LaborSelectionP : MonoBehaviour
                     Resources.Load<Sprite>("GodAnimationFrames/BabaYaga/frame_004"),
                 };
             bool attacking = false;
+            int level = 3 * (TrialNum % 5);
+            int grade = (TrialNum / 5) + 1;
             int baseHealth = 1360;
             int baseAttack = 200;
             int baseDefense = 60;
-            God newGod = new God("Baba Yaga", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
+            God newGod = new God("Baba Yaga", grade, level, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -214,10 +226,12 @@ public class LaborSelectionP : MonoBehaviour
                     // Add more frames as needed
                 };
             bool attacking = false;
+            int level = 3 * (TrialNum % 5);
+            int grade = (TrialNum / 5) + 1;
             int baseHealth = 1340;
             int baseAttack = 220;
             int baseDefense = 62;
-            God newGod = new God("Thor", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
+            God newGod = new God("Thor", grade, level, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -240,10 +254,12 @@ public class LaborSelectionP : MonoBehaviour
                     // Add more frames as needed
                 };
             bool attacking = false;
+            int level = 3 * (TrialNum % 5);
+            int grade = (TrialNum / 5) + 1;
             int baseHealth = 1520;
             int baseAttack = 168;
             int baseDefense = 68;
-            God newGod = new God("Amaterasu", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
+            God newGod = new God("Amaterasu", grade, level, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -270,10 +286,12 @@ public class LaborSelectionP : MonoBehaviour
                     // Add more frames as needed
                 };
             bool attacking = false;
+            int level = 3 * (TrialNum % 5);
+            int grade = (TrialNum / 5) + 1;
             int baseHealth = 1332;
             int baseAttack = 225;
             int baseDefense = 57;
-            God newGod = new God("Beelzebub", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
+            God newGod = new God("Beelzebub", grade, level, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -298,10 +316,12 @@ public class LaborSelectionP : MonoBehaviour
                     // Add more frames as needed
                 };
             bool attacking = false;
+            int level = 3 * (TrialNum % 5);
+            int grade = (TrialNum / 5) + 1;
             int baseHealth = 1800;
             int baseAttack = 155;
             int baseDefense = 78;
-            God newGod = new God("Typhon", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
+            God newGod = new God("Typhon", grade, level, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation); ;
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
 
@@ -329,10 +349,12 @@ public class LaborSelectionP : MonoBehaviour
                     // Add more frames as needed
                 };
             bool attacking = false;
+            int level = 3 * (TrialNum % 5);
+            int grade = (TrialNum / 5) + 1;
             int baseHealth = 1320;
             int baseAttack = 230;
             int baseDefense = 53;
-            God newGod = new God("Boogeyman", TrialNum, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
+            God newGod = new God("Boogeyman", grade, level, godIcon, description, sprite, attacking, baseHealth, baseAttack, baseDefense, animation);
             newGod.CalculateUpgradedStats(TrialNum);
             gameController.LaborEnemy = newGod;
         }

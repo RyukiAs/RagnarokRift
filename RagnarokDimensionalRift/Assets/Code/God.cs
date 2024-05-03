@@ -28,12 +28,12 @@ public class God
     public bool attacking;
     public List<Sprite> animation;
 
-    public God(string godName, int grade, Sprite icon, string description, Sprite sprite, bool attacking, int baseHealth, int baseAttack, int baseDefense, List<Sprite> animation)
+    public God(string godName, int grade, int level, Sprite icon, string description, Sprite sprite, bool attacking, int baseHealth, int baseAttack, int baseDefense, List<Sprite> animation)
     {
         this.godName = godName;
         this.grade = grade;
         this.icon = icon;
-        this.level = 1;
+        this.level = level;
         this.baseHealth = baseHealth;
         this.health = this.baseHealth;
         this.healthVar = health;
